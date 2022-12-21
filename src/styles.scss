@@ -1,0 +1,169 @@
+// @import '~bootstrap/scss/functions';
+// @import '~bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+$dark-blue:#1f2438 !important;
+$yellow: #fccc04 !important;
+body,
+html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.vh-75 {
+    min-height: 75vh !important;
+}
+
+.searchInput {
+    border: 4px solid $dark-blue;
+    padding: 13px 5px 13px 60px !important;
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -ms-border-radius: 0px !important;
+    -o-border-radius: 0px !important;
+    &:focus {
+        box-shadow: none !important;
+    }
+}
+
+.bg-dark-color {
+    background: $dark-blue
+}
+
+.color-yellow {
+    color: $yellow;
+}
+
+.fa-search {
+    top: 18px !important;
+    font-size: 30px !important;
+    left: 20px !important;
+}
+
+.pl-60 {
+    // padding-left: 60px !important;
+}
+
+.btn-download {
+    width: -webkit-fill-available !important;
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -ms-border-radius: 0px !important;
+    -o-border-radius: 0px !important;
+}
+
+.radius-0 {
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -ms-border-radius: 0px !important;
+    -o-border-radius: 0px !important;
+}
+
+.bg-yellow {
+    background: $yellow;
+}
+
+.border-yellow {
+    border: 1px solid $yellow;
+}
+
+.dropdown {
+    .dropdown-menu {
+        border: 3px solid $yellow;
+        width: -webkit-fill-available !important;
+    }
+    #dropdownMenuButton {
+        background: none !important;
+        border: 3px solid $yellow;
+        border-left: none !important;
+    }
+    .dropdown-item:hover,
+    .dropdown-item:active,
+    .dropdown-item:focus {
+        color: $yellow;
+        background: none !important;
+    }
+}
+
+// @include media-breakpoint-down(ms) {
+//     .btn-download {
+//         font-weight: normal !important;
+//         font-size: 14px !important;
+//     }
+// }
+// @include media-breakpoint-down(ms) {
+//     .btn-download {
+//         font-weight: normal !important;
+//     }
+// }
+.w-100 {
+    width: 100% !important;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+// /* Importing Bootstrap SCSS file. */
+.card {
+    height: 230px !important;
+    img {
+        height: 230px !important;
+    }
+}
+
+.border-dark-blue {
+    border: 1px solid $dark-blue;
+}
+
+// @include media-breakpoint-down(ms) {
+//     .card {
+//         height: 200px !important;
+//         overflow: hidden !important;
+//         img {
+//             height: 200px !important;
+//         }
+//     }
+// }
+// @include media-breakpoint-down(ms) {
+//     .card {
+//         height: 200px !important;
+//         overflow: hidden !important;
+//         img {
+//             height: 200px !important;
+//         }
+//     }
+// }
+// @include media-breakpoint-up(md) {
+//     .card {
+//         height: 250px !important;
+//         overflow: hidden !important;
+//         img {
+//             height: 250px !important;
+//         }
+//     }
+// }
+// @include media-breakpoint-up(lg) {
+//     .card {
+//         height: 280px !important;
+//         overflow: hidden !important;
+//         img {
+//             height: 280px !important;
+//         }
+//     }
+// }
+// @include media-breakpoint-up(xl) {
+//     .achie-img img {
+//         width: 550px;
+//         height: 400px;
+//     }
+// }
+// @include media-breakpoint-up(xxl) {
+//     .achie-img img {
+//         width: 650px;
+//         height: 460px;
+//     }
+// }

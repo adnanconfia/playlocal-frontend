@@ -1,0 +1,116 @@
+<div id="home" class="vh-75">
+    <div class="my-5">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="youtube text-center">
+                        <h1 class="text-center py-3 color-yellow ">Youtube</h1>
+                        <p>Welcom to youtube downloader, just simply paste your link, download in video/audio and emojy listening!.</p>
+                    </div>
+                    <form class="form-group">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-7 col-xxl-7 ">
+                                <div class="row">
+                                    <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9 px-0">
+                                        <div class="search position-relative">
+                                            <i class="fa fa-search position-absolute"></i>
+                                            <input (paste)="searching($event)" type="text" name="" id="" placeholder="Paste Your Link" class="form-control searchInput  pl-60 fw-semibold fs-5">
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 p-0">
+                                        <button class="btn btn-download bg-dark-color fw-semibold  fs-5 p-3 text-white">Download</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </form>
+                    <!-- <ngx-spinner [name]="spinner1" [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+                        loading...
+                    </ngx-spinner> -->
+
+
+                </div>
+
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-7 col-xxl-7 ps-0 ">
+                    <p class="text-start mt-2">By using our service you accept our <a class="color-yellow text-decoration-none">Terms and service</a></p>
+                </div>
+            </div>
+            <div class="row justify-content-center p-4" *ngIf="spinner">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8 my-4 ">
+                    <div class="spinner-border color-yellow" role="status">
+                        <span class="visually-hidden"></span>
+
+                    </div>
+                    <p>Processing link to download.Stay on the page.</p>
+                </div>
+            </div>
+            <div *ngIf="VideoDetails" class="row justify-content-center p-4">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8 my-4 ">
+                    <div class="card">
+                        <div class="row m-0 p-0 bg-dark-color">
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 m-0 p-0">
+                                <img src="{{ thumbnail }}" alt="" class="w-100 h-100">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 d-flex flex-column justify-content-center align-content-center">
+                                <div class="row ms-2">
+                                    <div class="col-12 text-start">
+                                        <div class="">
+
+                                            <p class="text-white  fw-bold">
+                                                {{Videotitle | slice:0:60}}...
+                                            </p>
+                                            <p class="text-white fw-lighter">16:30</p>
+                                            <div class="d-flex flex-row">
+                                                <button class="btn btn fw-bold text-white bg-yellow radius-0 border-yellow" [disabled]="!Disable" (click)="Download()">
+                                                Download
+                                            </button>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle radius-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Select the Quality
+                                                    </button>
+                                                    <div class="dropdown-menu radius-0" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="#" *ngFor='let r of Videoquality; index as i;' (click)="selectValue(r)">
+                                                            <div class="d-flex flex-row justify-content-between">
+                                                                <span class="">
+                                                                MP4
+                                                            </span>
+                                                                <span>
+                                                                        {{r}}
+                                                            </span>
+                                                            </div>
+                                                        </a>
+                                                        <a class="dropdown-item" href="#" *ngFor='let a of audio; index as i;' (click)="selectValue(a)">
+                                                            <div class="d-flex flex-row justify-content-between">
+                                                                <span class="">
+                                                                    MP3
+                                                                </span>
+                                                                <span>
+                                                                            {{a}}
+                                                                </span>
+                                                            </div>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
