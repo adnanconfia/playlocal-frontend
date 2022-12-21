@@ -21,6 +21,7 @@ export class LandingPageComponent implements OnInit {
   public selected_quality: any;
   public Disable = false;
   public ResYoutubeUrl: any;
+
   ngOnInit(): void {
     // this.searchVideo = this.fb.group({
     //   // searchUrl: ['']
@@ -40,6 +41,7 @@ export class LandingPageComponent implements OnInit {
           this.thumbnail = this.VideoDetails['thumbnail_url'];
           this.Videoquality = this.VideoDetails['resolution'];
           this.audio = this.VideoDetails['audio'];
+          
           console.log(this.Videoquality);
         },
         error => {
@@ -88,6 +90,7 @@ export class LandingPageComponent implements OnInit {
     }
   }
   Download() {
-    window.location.href = this.ResYoutubeUrl;
+    window.open(this.ResYoutubeUrl);
+    
   }
 }
