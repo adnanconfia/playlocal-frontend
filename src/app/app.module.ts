@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InputTextModule,
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SelectButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,16 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-  constructor(private service: SearchVideoService) {}
+  public stateOptions: any[];
+  public value1: string = 'mp4';
+  constructor(private service: SearchVideoService) {
+    this.stateOptions = [
+      { label: 'Audio', value: 'mp3' },
+      { label: 'Video', value: 'mp4' }
+    ];
+    console.log(this.value1);
+  }
+
   searchVideo!: FormGroup;
   public YoutubeUrl: any;
   public VideoDetails: any;
@@ -21,6 +30,7 @@ export class LandingPageComponent implements OnInit {
   public selected_quality: any;
   public Disable = false;
   public ResYoutubeUrl: any;
+  public spinner2 = false;
 
   ngOnInit(): void {
     // this.searchVideo = this.fb.group({
@@ -41,7 +51,7 @@ export class LandingPageComponent implements OnInit {
           this.thumbnail = this.VideoDetails['thumbnail_url'];
           this.Videoquality = this.VideoDetails['resolution'];
           this.audio = this.VideoDetails['audio'];
-          
+          console.log(this.value1);
           console.log(this.Videoquality);
         },
         error => {
@@ -62,6 +72,7 @@ export class LandingPageComponent implements OnInit {
     //   });
   }
   selectValue(r: any) {
+    this.spinner2 = true;
     this.selected_quality = r;
     console.log(this.selected_quality);
     if (this.YoutubeUrl && this.selected_quality) {
@@ -70,6 +81,7 @@ export class LandingPageComponent implements OnInit {
         .subscribe(
           (resp: any) => {
             console.log(resp);
+            this.spinner2 = false;
             this.Disable = true;
             this.ResYoutubeUrl = resp['data'][0].file_path;
             console.log(this.ResYoutubeUrl);
@@ -89,8 +101,30 @@ export class LandingPageComponent implements OnInit {
       console.log(this.VideoDetails);
     }
   }
+  selectAudio(a: any) {
+    this.spinner2 = true;
+    this.selected_quality = a;
+    console.log(this.selected_quality);
+    if (this.YoutubeUrl && this.selected_quality) {
+      this.service
+        .DownloadAudio(this.YoutubeUrl, this.selected_quality)
+        .subscribe(
+          (resp: any) => {
+            console.log(resp);
+            this.spinner2 = false;
+            this.Disable = true;
+            this.ResYoutubeUrl = resp['data'][0].file_path;
+            console.log(this.ResYoutubeUrl);
+          },
+          error => {
+            this.spinner = false;
+            Swal.fire('Alert', 'Something is not right', 'error');
+          }
+        );
+      console.log(this.VideoDetails);
+    }
+  }
   Download() {
     window.open(this.ResYoutubeUrl);
-    
   }
 }

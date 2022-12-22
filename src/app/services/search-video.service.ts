@@ -23,4 +23,10 @@ export class SearchVideoService {
         shareReplay()
       );
   }
+  DownloadAudio(url: any, abr: any) {
+    return this.http.post(this.apiRoot.concat('download'), { url, abr }).pipe(
+      tap(response => {}),
+      shareReplay()
+    );
+  }
 }
