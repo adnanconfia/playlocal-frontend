@@ -1,4 +1,4 @@
-import { environment } from './../../assets/environments/environments';
+import { environment } from './../../environments/environments';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap, shareReplay } from 'rxjs/operators';
