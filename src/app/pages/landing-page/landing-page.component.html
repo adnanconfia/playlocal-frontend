@@ -59,7 +59,7 @@
                 </div>
                 <div *ngIf="VideoDetails" class="row justify-content-center p-4">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8 my-4 ">
-                        <p-selectButton class="radius-0" [options]="stateOptions" [(ngModel)]="value1" optionLabel="label" optionValue="value"></p-selectButton>
+                        <p-selectButton class="radius-0" [options]="stateOptions" [(ngModel)]="value1" (onChange)="ValueChange()" optionLabel="label" optionValue="value"></p-selectButton>
                         <div class="card">
                             <div class="row m-0 p-0 bg-dark-color">
                                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 m-0 p-0">
@@ -74,13 +74,14 @@
                                                     {{Videotitle | slice:0:60}}...
                                                 </p>
                                                 <p class="text-white fw-lighter">{{VideoDetails['length']}}</p>
-                                                <div class="d-flex flex-row">
+                                                <div class="d-flex flex-row" *ngIf="!spinner2">
                                                     <button class="btn btn fw-bold text-white bg-yellow radius-0 border-yellow" [disabled]="!Disable" (click)="Download()">
                                                 Download
                                             </button>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle radius-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Select the Quality
+                                                        <span *ngIf="selected_quality">{{selected_quality}}</span>
+                                                        <span *ngIf="!selected_quality">Select the Quality</span>
                                                     </button>
                                                         <div class="dropdown-menu radius-0" aria-labelledby="dropdownMenuButton">
                                                             <a class="dropdown-item" *ngIf="value1=='mp4'">

@@ -12,13 +12,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SelectButtonModule} from 'primeng/selectbutton';
+import { FileSaverModule } from 'ngx-filesaver';
+import { ThanksComponent } from './pages/thanks/thanks.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    ThanksComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import {SelectButtonModule} from 'primeng/selectbutton';
     HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
+    FileSaverModule ,
     SelectButtonModule
   ],
   providers: [],

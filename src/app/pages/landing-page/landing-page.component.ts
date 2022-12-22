@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SearchVideoService } from '../../services/search-video.service';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HttpResponse } from '@angular/common/http';
+import { FileSaverService } from 'ngx-filesaver';
+import * as FileSaver from 'file-saver';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -11,7 +15,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LandingPageComponent implements OnInit {
   public stateOptions: any[];
   public value1: string = 'mp4';
-  constructor(private service: SearchVideoService) {
+  constructor(private service: SearchVideoService, private router:Router) {
     this.stateOptions = [
       { label: 'Audio', value: 'mp3' },
       { label: 'Video', value: 'mp4' }
@@ -80,18 +84,12 @@ export class LandingPageComponent implements OnInit {
         .DownloadVideo(this.YoutubeUrl, this.selected_quality)
         .subscribe(
           (resp: any) => {
-            console.log(resp);
+        
             this.spinner2 = false;
             this.Disable = true;
             this.ResYoutubeUrl = resp['data'][0].file_path;
-            console.log(this.ResYoutubeUrl);
-            // this.spinner = false;
-            // this.VideoDetails = resp['data']['0'];
-            // this.Videotitle = this.VideoDetails['title'];
-            // this.thumbnail = this.VideoDetails['thumbnail_url'];
-            // this.Videoquality = this.VideoDetails['resolution'];
-            // this.audio = this.VideoDetails['audio'];
-            // console.log(this.Videoquality);
+           
+         
           },
           error => {
             this.spinner = false;
@@ -110,11 +108,11 @@ export class LandingPageComponent implements OnInit {
         .DownloadAudio(this.YoutubeUrl, this.selected_quality)
         .subscribe(
           (resp: any) => {
-            console.log(resp);
+           
             this.spinner2 = false;
             this.Disable = true;
             this.ResYoutubeUrl = resp['data'][0].file_path;
-            console.log(this.ResYoutubeUrl);
+          
           },
           error => {
             this.spinner = false;
@@ -124,7 +122,17 @@ export class LandingPageComponent implements OnInit {
       console.log(this.VideoDetails);
     }
   }
+  ValueChange(){
+    this.selected_quality=null;
+    this.Disable=false;
+  }
   Download() {
-    window.open(this.ResYoutubeUrl);
+    FileSaver.saveAs(this.ResYoutubeUrl, this.Videotitle + "." + this.value1);
+    this.service.DeleteFile(this.ResYoutubeUrl).subscribe((resp:any)=>{
+      console.log(resp);
+    })
+    this.router.navigateByUrl("/thanks");
+   
+  
   }
 }
