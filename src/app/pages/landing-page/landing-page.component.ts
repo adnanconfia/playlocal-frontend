@@ -35,6 +35,7 @@ export class LandingPageComponent implements OnInit {
   public Disable = false;
   public ResYoutubeUrl: any;
   public spinner2 = false;
+  public url_error = false;
 
   ngOnInit(): void {
     // this.searchVideo = this.fb.group({
@@ -46,23 +47,52 @@ export class LandingPageComponent implements OnInit {
     this.YoutubeUrl = event.clipboardData.getData('Text');
     console.log(this.YoutubeUrl);
     if (this.YoutubeUrl) {
-      this.service.GetVedioDetails(this.YoutubeUrl).subscribe(
-        (resp: any) => {
-          console.log(resp);
-          this.spinner = false;
-          this.VideoDetails = resp['data']['0'];
-          this.Videotitle = this.VideoDetails['title'];
-          this.thumbnail = this.VideoDetails['thumbnail_url'];
-          this.Videoquality = this.VideoDetails['resolution'];
-          this.audio = this.VideoDetails['audio'];
-          console.log(this.value1);
-          console.log(this.Videoquality);
-        },
-        error => {
-          this.spinner = false;
-          Swal.fire('Alert', 'Something is not right', 'error');
+      if (this.YoutubeUrl != undefined || this.YoutubeUrl != ''){
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+        var match = this.YoutubeUrl.match(regExp);
+        if (match && match[2].length == 11) {
+          this.url_error = false;
+          this.service.GetVedioDetails(this.YoutubeUrl).subscribe(
+              (resp: any) => {
+                console.log(resp);
+                this.spinner = false;
+                this.VideoDetails = resp['data']['0'];
+                this.Videotitle = this.VideoDetails['title'];
+                this.thumbnail = this.VideoDetails['thumbnail_url'];
+                this.Videoquality = this.VideoDetails['resolution'];
+                this.audio = this.VideoDetails['audio'];
+                console.log(this.value1);
+                console.log(this.Videoquality);
+              },
+              error => {
+                this.spinner = false;
+                Swal.fire('Alert', 'Something is not right', 'error');
+              }
+            );
         }
-      );
+        else{
+          this.url_error = true;
+          this.spinner = false;
+        }
+
+      }
+      // this.service.GetVedioDetails(this.YoutubeUrl).subscribe(
+      //   (resp: any) => {
+      //     console.log(resp);
+      //     this.spinner = false;
+      //     this.VideoDetails = resp['data']['0'];
+      //     this.Videotitle = this.VideoDetails['title'];
+      //     this.thumbnail = this.VideoDetails['thumbnail_url'];
+      //     this.Videoquality = this.VideoDetails['resolution'];
+      //     this.audio = this.VideoDetails['audio'];
+      //     console.log(this.value1);
+      //     console.log(this.Videoquality);
+      //   },
+      //   error => {
+      //     this.spinner = false;
+      //     Swal.fire('Alert', 'Something is not right', 'error');
+      //   }
+      // );
       console.log(this.VideoDetails);
     }
 
