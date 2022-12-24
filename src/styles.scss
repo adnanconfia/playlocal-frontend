@@ -204,7 +204,7 @@
                 
                 // /* Importing Bootstrap SCSS file. */
                 .card {
-                    height: 230px !important;
+                    min-height: 230px !important;
                     img {
                         height: 230px !important;
                     }

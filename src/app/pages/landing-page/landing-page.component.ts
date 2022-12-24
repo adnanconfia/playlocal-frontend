@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SearchVideoService } from '../../services/search-video.service';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -7,6 +7,7 @@ import { HttpResponse } from '@angular/common/http';
 import { FileSaverService } from 'ngx-filesaver';
 import * as FileSaver from 'file-saver';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -15,7 +16,9 @@ import { Router } from '@angular/router';
 export class LandingPageComponent implements OnInit {
   public stateOptions: any[];
   public value1: string = 'mp4';
-  constructor(private service: SearchVideoService, private router:Router) {
+  searchVideo:any=new FormGroup({url:new FormControl()});
+  
+  constructor(private service: SearchVideoService, private router:Router,private fb: FormBuilder) {
     this.stateOptions = [
       { label: 'Audio', value: 'mp3' },
       { label: 'Video', value: 'mp4' }
@@ -23,7 +26,6 @@ export class LandingPageComponent implements OnInit {
     console.log(this.value1);
   }
 
-  searchVideo!: FormGroup;
   public YoutubeUrl: any;
   public VideoDetails: any;
   public spinner = false;
@@ -36,16 +38,29 @@ export class LandingPageComponent implements OnInit {
   public ResYoutubeUrl: any;
   public spinner2 = false;
   public url_error = false;
+  public downloaded = false;
 
   ngOnInit(): void {
-    // this.searchVideo = this.fb.group({
-    //   // searchUrl: ['']
-    // });
+    this.searchVideo = this.fb.group({
+      url: ['',[Validators.required]]
+    });
   }
   async searching(event: any) {
+   
+    this.VideoDetails=null;
     this.spinner = true;
+    if(event.clipboardData){
     this.YoutubeUrl = event.clipboardData.getData('Text');
-    console.log(this.YoutubeUrl);
+  }else{
+      if (this.searchVideo.valid) {
+    this.YoutubeUrl = this.searchVideo.get('url').value
+      }
+      else{
+        this.url_error = true;
+        this.spinner = false;
+      }
+  }
+
     if (this.YoutubeUrl) {
       if (this.YoutubeUrl != undefined || this.YoutubeUrl != ''){
         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
@@ -74,7 +89,11 @@ export class LandingPageComponent implements OnInit {
           this.url_error = true;
           this.spinner = false;
         }
-
+      }
+      else{
+        this.url_error = true;
+        this.spinner = false;
+      }
       }
       // this.service.GetVedioDetails(this.YoutubeUrl).subscribe(
       //   (resp: any) => {
@@ -94,7 +113,7 @@ export class LandingPageComponent implements OnInit {
       //   }
       // );
       console.log(this.VideoDetails);
-    }
+    
 
     // const promise = this.service.GetVedioDetails(this.YoutubeUrl).toPromise();
     // await promise
@@ -161,7 +180,9 @@ export class LandingPageComponent implements OnInit {
     this.service.DeleteFile(this.ResYoutubeUrl).subscribe((resp:any)=>{
       console.log(resp);
     })
-    this.router.navigateByUrl("/thanks");
+    // this.router.navigateByUrl("/thanks");
+    
+   this.downloaded = true;
    
   
   }
