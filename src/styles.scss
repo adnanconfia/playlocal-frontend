@@ -17,7 +17,7 @@
                 }
                 
                 .bg-dark-color {
-                    background: $dark-blue
+                    background: $dark-blue;
                 }
                 
                 .color-yellow {
@@ -246,6 +246,13 @@
                     border-color: $dark-blue;
                 }
                 
+                .terms {
+                    a {
+                        text-decoration: none !important;
+                        cursor: pointer !important;
+                    }
+                }
+                
                 //     }
                 // }
                 // @include media-breakpoint-down(ms) {
@@ -287,3 +294,15 @@
                 //         height: 460px;
                 //     }
                 // }
+                .howtodownload {
+                    img {
+                        width: -webkit-fill-available !important;
+                    }
+                }
+                
+                .title-border {
+                    background: $yellow;
+                    height: 3px;
+                    width: 50px;
+                    display: inline-block;
+                }

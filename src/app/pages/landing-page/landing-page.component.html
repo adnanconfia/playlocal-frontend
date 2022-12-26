@@ -1,7 +1,7 @@
 <div id="home" class="vh-75 pb-5 mb-5">
     <div class="my-5">
 
-        <div class="row w-100" *ngIf="!downloaded">
+        <div class="row w-100 m-0" *ngIf="!downloaded">
             <div class="col-12">
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1984239636234498" crossorigin="anonymous"></script>
                 <!-- Banner Horizontal -->
@@ -19,35 +19,35 @@
                 </script>
             </div>
             <div class="col-12 col-md-12 col-lg-8">
-                <div class="row ">
-                     <div class="col-11 col-sm-11 col-md-9 col-lg-9 col-xl-7 col-xxl-7 mx-auto ">
-                         <div class="youtube text-center ">
+                <div class="row m-0">
+                    <div class="col-12 mx-auto ">
+                        <div class="youtube text-center ">
                             <h1 class="text-center py-3 color-yellow ">Youtube</h1>
-                            </div>
-                         <div class="youtube text-start ">
-                          
-                            <p class="fs-5">Welcome to <span class="color-yellow">PlayLocal</span> youtube downloader, just simply paste your link, download  video/audio and enjoy listening!.</p>
                         </div>
-                     </div>
+                        <div class="youtube text-start ">
+
+                            <p class="fs-5">Welcome to <span class="color-yellow">PlayLocal</span> youtube downloader, just simply paste your link, download video/audio and enjoy listening!.</p>
+                        </div>
+                    </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
-                       
+
                         <form class="form-group w-100" [formGroup]="searchVideo">
                             <div class="row justify-content-center">
-                                <div class="col-11 col-sm-11 col-md-9 col-lg-9 col-xl-7 col-xxl-7 mx-auto ">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mx-auto ">
                                     <div class="align-items-center d-flex justify-content-center">
                                         <div class="px-0 w-100">
                                             <div class="search position-relative">
                                                 <i class="fa fa-search position-absolute"></i>
                                                 <input (paste)="searching($event)" formControlName="url" type="text" name="" id="url" placeholder="Paste Your Link" class="form-control searchInput  pl-60 fw-semibold">
-                                              
+
                                             </div>
                                         </div>
                                         <div class="p-0">
                                             <button (click)="searching($event)" class="btn btn-download bg-dark-color  text-white px-2" [disabled]="spinner || searchVideo.invalid ">Download</button>
                                         </div>
-                                        
+
                                     </div>
-                                      <small class="text-danger mt-2" *ngIf="url_error ">Link is incorrect</small>
+                                    <small class="text-danger mt-2" *ngIf="url_error ">Link is incorrect</small>
 
 
                                 </div>
@@ -63,6 +63,9 @@
 
 
                     </div>
+                    <div class="col-12 text-center mt-3">
+                        <p class="terms">By using our service you are accepting our <a class="color-yellow" (click)="Terms()">Terms & Conditions.</a></p>
+                    </div>
                     <div class="col-12">
                         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1984239636234498" crossorigin="anonymous"></script>
                         <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-1984239636234498" data-ad-slot="3267808546"></ins>
@@ -70,7 +73,7 @@
                             (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
                     </div>
-                   
+
 
                 </div>
 
@@ -171,25 +174,25 @@
                     </div>
                 </div>
                 <div class="row">
-                     <div class="col-12 ">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1984239636234498" crossorigin="anonymous"></script>
-                <!-- Banner Horizontal -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1984239636234498" data-ad-slot="7398625245" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-                </div>
-                 <div class="row justify-content-center  text-start my-5">
-                        <div class="col-11 col-sm-11 col-md-9 col-lg-9 col-xl-7 col-xxl-7  mx-auto">
-                            <p class="fs-5">
-                                You may quickly download videos from the Internet to your device. All file types are accepted. 100% free!
-You may download multiple files simultaneously with Playlocal. download and stream it.
-Playlocal is a free app for downloading videos from  YouTube.
-                            </p>
-                            <!-- <p class="text-start mt-2">By using our service you accept our <a class="color-yellow text-decoration-none">Terms and service</a></p> -->
-                        </div>
+                    <div class="col-12 ">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1984239636234498" crossorigin="anonymous"></script>
+                        <!-- Banner Horizontal -->
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1984239636234498" data-ad-slot="7398625245" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
                     </div>
+                </div>
+                <div class="row justify-content-center  text-start mb-5 m-0">
+                    <div class="col-12   mx-auto">
+                        <p class="fs-5">
+                            Playlocal is the fastest YouTube Downloader application that makes it simple to convert and download videos and audios from YouTube for free and in the highest quality possible. The best option for downloading limitless YouTube videos without registering
+                            is PlayLocal. Directly from YouTube, you may rapidly convert and download hundreds of video and music files. The most astonishing part is that we support all music and video file types, including MP3, MP4, and others, and it's
+                            totally free.
+                        </p>
+                        <!-- <p class="text-start mt-2">By using our service you accept our <a class="color-yellow text-decoration-none">Terms and service</a></p> -->
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-md-12 col-lg-2">
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1984239636234498" crossorigin="anonymous"></script>
@@ -207,7 +210,66 @@ Playlocal is a free app for downloading videos from  YouTube.
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
+
         </div>
         <app-thanks *ngIf="downloaded"></app-thanks>
+        <!-- How to download -->
+        <div class=" row bg-dark-color py-4 howtodownload m-0">
+            <div class="col-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2">
+
+            </div>
+            <div class="col-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
+                <div class="row">
+
+                    <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-items-center my-auto">
+                        <h3 class="text-white">
+                            How to Download Youtube Videos online
+                        </h3>
+                        <ul class="text-white">
+                            <li>Copy the link to the video and paste it in the input line.</li>
+                            <li>Click "Download" and wait for the video to be ready.</li>
+                            <li>Choose your desired option of Audio or Video.</li>
+                            <li>Click download after choosing the download quality you want to download.</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto">
+                        <img src="../../../assets/img/downloading.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2">
+            </div>
+
+
+        </div>
+
+        <div class="pt-4">
+            <div class="row m-0">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
+                    <div class="text-center">
+                        <h2 class="pt-3 text-capitalize">
+                            What we provide?
+                        </h2>
+                        <span class="title-border mb-3">
+                        
+                                        </span>
+                    </div>
+
+                    <h4>Countless Conversions</h4>
+                    <p>We provide limitless YouTube to mp3 and mp4 conversion services.</p>
+                    <h4>Automatic data-fetching</h4>
+                    <p>You only need to copy and paste the YouTube URL to download video.</p>
+
+                    <h4>No Registration Needed </h4>
+                    <p>You don't have to register in order to download YouTube videos.</p>
+                    <h4>Compatible with browsers</h4>
+                    <p>The newest browsers, including Chrome, Firefox, and Safari, are entirely compatible with our online application.</p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
+
+            </div>
+        </div>
+
     </div>
 </div>

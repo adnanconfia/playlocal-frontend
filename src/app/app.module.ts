@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { FileSaverModule } from 'ngx-filesaver';
 import { ThanksComponent } from './pages/thanks/thanks.component';
+import { TermsComponent } from './pages/terms/terms.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ThanksComponent } from './pages/thanks/thanks.component';
     HeaderComponent,
     FooterComponent,
     LandingPageComponent,
-    ThanksComponent
+    ThanksComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
