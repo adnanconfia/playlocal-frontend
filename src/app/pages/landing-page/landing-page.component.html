@@ -1,7 +1,9 @@
 <div id="home" class="vh-75 pb-5 mb-5">
     <div class="my-5">
 
-        <div class="row w-100 m-0" *ngIf="!downloaded">
+
+        <div class="row w-100 m-0" *ngIf="!this.service.downloaded">
+            
             <div class="col-12">
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1984239636234498" crossorigin="anonymous"></script>
                 <!-- Banner Horizontal -->
@@ -28,6 +30,37 @@
 
                             <p class="fs-5">Welcome to <span class="color-yellow">PlayLocal</span> youtube downloader, just simply paste your link, download video/audio and enjoy listening!.</p>
                         </div>
+                    </div>
+                    <div class="col-12">
+                           <div class="">
+                        <h2 class="pt-3 text-capitalize">
+                            Instructions
+                        </h2>
+                        <span class="title-border mb-3">
+
+                                        </span>
+                    </div>
+
+                    <p>1. Directly paste the link of video you want to convert.</p>
+                    <p>2. Click "Download" button to see the video thumbnail.</p>
+                    <p>3. Select the video/audio format you want to download, then click "Download" button.</p>
+                        <!-- <div class="row m-0"> -->
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
+                    <div class="text-center">
+                        <h2 class="pt-3 text-capitalize">
+                            Instructions
+                        </h2>
+                        <span class="title-border mb-3">
+
+                                        </span>
+                    </div>
+
+                    <p>1. Directly paste the link of video you want to convert.</p>
+                    <p>2. Click "Download" button to see the video thumbnail.</p>
+                    <p>3. Select the video/audio format you want to download, then click "Download" button.</p>
+                </div> -->
+
+            <!-- </div> -->
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
 
@@ -192,6 +225,18 @@
                             is PlayLocal. Directly from YouTube, you may rapidly convert and download hundreds of video and music files. The most astonishing part is that we support all music and video file types, including MP3, MP4, and others, and it's
                             totally free.
                         </p>
+                        <p class="fs-5">
+                            Never before has downloading YouTube videos been so simple! Stop wasting time. Simply use our software on your devices to access free YouTube content!
+                            
+
+
+                        </p>
+                        <p>
+We make YouTube download process fast and easy.
+                        </p>
+                        <p>
+No more long video buffering times!
+                        </p>
                         <!-- <p class="text-start mt-2">By using our service you accept our <a class="color-yellow text-decoration-none">Terms and service</a></p> -->
                     </div>
                 </div>
@@ -214,7 +259,7 @@
             </div>
 
         </div>
-        <app-thanks *ngIf="downloaded"></app-thanks>
+        <app-thanks *ngIf="this.service.downloaded"></app-thanks>
         <!-- How to download -->
         <div class=" row bg-dark-color py-4 howtodownload m-0">
             <div class="col-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2">
@@ -249,7 +294,7 @@
             <div class="row m-0">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
-                    <div class="text-center">
+                    <div class="">
                         <h2 class="pt-3 text-capitalize">
                             What we provide?
                         </h2>
@@ -267,6 +312,74 @@
                     <p>You don't have to register in order to download YouTube videos.</p>
                     <h4>Compatible with browsers</h4>
                     <p>The newest browsers, including Chrome, Firefox, and Safari, are entirely compatible with our online application.</p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
+
+            </div>
+              
+             <div class="row m-0">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
+                    <div class="">
+                        <h2 class="pt-3 text-capitalize">
+                           What we have?
+                        </h2>
+                        <span class="title-border mb-3">
+
+                                        </span>
+                    </div>
+
+
+
+                    <p>YouTube to MP3.</p>
+                    <p>YouTube to MP4.</p>
+                    <p>YouTube video downloader.</p>
+                    <p>YouTube Shorts / Reels downloader.</p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
+
+            </div>
+            <div class="row m-0">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
+                    <div class="">
+                        <h2 class="pt-3 text-capitalize">
+                           Convert YouTube videos to MP3 and MP4What we have?
+                        </h2>
+                        <span class="title-border mb-3">
+
+                                        </span>
+                    </div>
+
+                    <p>We're happy to inform that you can now convert YouTube videos to mp4 online using our website! This is yet another example of our dedication to providing you with the resources to download videos from YouTube and enjoy them wherever you are!</p>
+                    <p>We're happy to inform that you can now convert YouTube videos to mp4 online using our website! This is yet another example of our dedication to providing you with the resources to download videos from YouTube and enjoy them wherever you are!</p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
+
+            </div>
+            <div class="row m-0">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
+                    <div class="">
+                        <h2 class="pt-3 text-capitalize">
+                            FAQ
+                        </h2>
+                        <span class="title-border mb-3">
+
+                                        </span>
+                    </div>
+
+                    <h4>How to download video from YouTube on Android?</h4>
+                    <p>Paste the URL of the YT video or playlist in the input field and tap on the "Download" button. In the dropdown menu, you will see your YouTube song..</p>
+                    <h4>Is downloading a YouTube video illegal?</h4>
+                    <p>Generally, it's only illegal if the content is copyrighted and you didn't have permission to make copies of it. If you're downloading a YouTube video for personal use, it doesn't break anything.</p>
+
+                    <h4>Is Playlocal a limited number of uses? </h4>
+                    <p>Our "Youtube Downloader" tool allows you to download unlimited YouTube video and all for free.</p>
+                    <h4>What formats does Playlocal allow to convert YouTube video to?</h4>
+                    <p>We support convert and download video from youtube in a variety of formats like: MP4 and MP3. You can watch it right on the device without download any additional software.</p>
+                    <h4>Can we download youtube shorts or reels?</h4>
+                    <p>Yes you can, simply paste the link in search bar and click on download.</p>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2"></div>
 

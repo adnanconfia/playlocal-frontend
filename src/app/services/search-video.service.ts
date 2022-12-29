@@ -7,6 +7,8 @@ import { tap, shareReplay } from 'rxjs/operators';
 })
 export class SearchVideoService {
   apiRoot = environment.apiURL;
+  downloaded= false;
+  VideoDetails :any=null;
 
   constructor(private http: HttpClient) {}
   GetVedioDetails(url: any) {
