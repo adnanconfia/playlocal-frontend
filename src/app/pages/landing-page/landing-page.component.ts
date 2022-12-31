@@ -66,7 +66,7 @@ export class LandingPageComponent implements OnInit {
       if (this.YoutubeUrl != undefined || this.YoutubeUrl != ''){
         var regExp = /(youtu.*be.*)\/(watch\?v=|embed\/|v|shorts|)(.*?((?=[&#?])|$))/gm;
         var match = this.YoutubeUrl.match(regExp);
-        if (match && match[2].length == 11) {
+        if (match) {
           this.url_error = false;
           this.service.GetVedioDetails(this.YoutubeUrl).subscribe(
               (resp: any) => {
