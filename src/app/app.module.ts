@@ -11,11 +11,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {SelectButtonModule} from 'primeng/selectbutton';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { FileSaverModule } from 'ngx-filesaver';
 import { ThanksComponent } from './pages/thanks/thanks.component';
 import { TermsComponent } from './pages/terms/terms.component';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +34,7 @@ import { TermsComponent } from './pages/terms/terms.component';
     HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    FileSaverModule ,
+    FileSaverModule,
     SelectButtonModule
   ],
   providers: [],

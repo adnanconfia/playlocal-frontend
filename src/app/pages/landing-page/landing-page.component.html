@@ -12,7 +12,7 @@
                 <div class="row m-0">
                     <div class="col-12 mx-auto ">
                         <div class="youtube text-center ">
-                            <h1 class="text-center py-3 color-yellow ">Youtube Downloader</h1>
+                            <h1 class="text-center py-3 color-yellow text-capitalize">{{value_tabs}} Downloader</h1>
                         </div>
                         <div class="youtube text-start ">
 
@@ -51,15 +51,20 @@
                         <!-- </div> -->
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
-
-                        <form class="form-group w-100" [formGroup]="searchVideo">
+                        <p-selectButton class="radius-0" [options]="tabs_option" [(ngModel)]="value_tabs" optionLabel="label" optionValue="value" (onChange)='ChangeTab()'>
+                            <ng-template let-item>
+                                <span>{{item.label}}</span>
+                                <i [class]="item.icon"></i>
+                            </ng-template>
+                        </p-selectButton>
+                        <form class="form-group w-100 m-top-1" [formGroup]="searchVideo">
                             <div class="row justify-content-center">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mx-auto ">
                                     <div class="align-items-center d-flex justify-content-center">
                                         <div class="px-0 w-100">
                                             <div class="search position-relative">
                                                 <i class="fa fa-search position-absolute"></i>
-                                                <input (paste)="searching($event)" formControlName="url" type="text" name="" id="url" placeholder="Paste Your Link" class="form-control searchInput  pl-60 fw-semibold">
+                                                <input (paste)="searching($event)" formControlName="url" type="text" name="" id="url" placeholder="Paste Your {{value_tabs}} Link" class="form-control searchInput  pl-60 fw-semibold">
 
                                             </div>
                                         </div>
@@ -68,7 +73,8 @@
                                         </div>
 
                                     </div>
-                                    <small class="text-danger mt-2" *ngIf="url_error ">Link is incorrect</small>
+                                    <small class="text-danger mt-2" *ngIf="url_error ">Not an appropriate link for {{value_tabs}}!
+                                    </small>
 
 
                                 </div>
