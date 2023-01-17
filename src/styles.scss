@@ -6,6 +6,10 @@
                 @import "../node_modules/bootstrap/scss/mixins";
                 $dark-blue:#1f2438 !important;
                 $yellow: #fccc04 !important;
+                $youtube: #FF0000 !important;
+                $facebook:#4267B2 !important;
+                $insta: #C13584 !important;
+                $linkedin:#0072b1 !important;
                 body,
                 html {
                     height: 100%;
@@ -267,6 +271,31 @@
                     }
                 }
                 
+                .color-youtube {
+                    color: $youtube
+                }
+                
+                .color-insta {
+                    color: $insta
+                }
+                
+                .color-fb {
+                    color: $facebook
+                }
+                
+                .color-linked {
+                    color: $linkedin
+                }
+                
+                // #tags-button {
+                //     .p-selectbutton:nth-child(1) {
+                //         color: #fccc04 !important;
+                //     }
+                //     .p-selectbutton:nth-child(1),
+                //     .p-selectbutton:nth-child(1) {
+                //         color: #fccc04 !important;
+                //     }
+                // }
                 //     }
                 // }
                 // @include media-breakpoint-down(ms) {

@@ -38,10 +38,26 @@ export class LandingPageComponent implements OnInit {
     ];
     console.log(this.value1);
     this.tabs_option = [
-      { label: 'YouTube', value: 'youtube', icon: 'pi pi-youtube' },
-      { label: 'FaceBook', value: 'facebook', icon: 'pi pi-facebook' },
-      { label: 'Instagram', value: 'instagram', icon: 'pi pi-instagram' },
-      { label: 'LnikedIn', value: 'linkedin', icon: 'pi pi-linkedin' }
+      {
+        label: 'YouTube',
+        value: 'youtube',
+        icon: 'pi pi-youtube color-youtube'
+      },
+      {
+        label: 'FaceBook',
+        value: 'facebook',
+        icon: 'pi pi-facebook color-fb'
+      },
+      {
+        label: 'Instagram',
+        value: 'instagram',
+        icon: 'pi pi-instagram color-insta'
+      },
+      {
+        label: 'LnikedIn',
+        value: 'linkedin',
+        icon: 'pi pi-linkedin color-linked'
+      }
     ];
     console.log(this.value_tabs);
   }
@@ -63,7 +79,8 @@ export class LandingPageComponent implements OnInit {
   public InstaUrl: any;
   public FbUrl: any;
   public LinkedUrl: any;
-
+  public ResFbUrl: any;
+  public RespUrl: any;
   ngOnInit(): void {
     this.searchVideo = this.fb.group({
       url: ['', [Validators.required]]
@@ -130,7 +147,7 @@ export class LandingPageComponent implements OnInit {
                 this.Videotitle = this.VideoDetails['title'];
                 this.thumbnail = this.VideoDetails['thumbnail'];
                 this.Videoquality = this.VideoDetails['quality'];
-                // this.audio = this.VideoDetails['audio'];
+                this.audio = this.VideoDetails['audio'];
                 // console.log(this.value1);
                 // console.log(this.Videoquality);
               },
@@ -161,23 +178,7 @@ export class LandingPageComponent implements OnInit {
         this.spinner = false;
       }
     }
-    // this.service.GetVedioDetails(this.YoutubeUrl).subscribe(
-    //   (resp: any) => {
-    //     console.log(resp);
-    //     this.spinner = false;
-    //     this.VideoDetails = resp['data']['0'];
-    //     this.Videotitle = this.VideoDetails['title'];
-    //     this.thumbnail = this.VideoDetails['thumbnail_url'];
-    //     this.Videoquality = this.VideoDetails['resolution'];
-    //     this.audio = this.VideoDetails['audio'];
-    //     console.log(this.value1);
-    //     console.log(this.Videoquality);
-    //   },
-    //   error => {
-    //     this.spinner = false;
-    //     Swal.fire('Alert', 'Something is not right', 'error');
-    //   }
-    // );
+
     console.log(this.VideoDetails);
 
     // const promise = this.service.GetVedioDetails(this.YoutubeUrl).toPromise();
@@ -197,21 +198,40 @@ export class LandingPageComponent implements OnInit {
     this.spinner2 = true;
     this.selected_quality = r;
     console.log(this.selected_quality);
-    if (this.YoutubeUrl && this.selected_quality) {
-      this.service
-        .DownloadVideo(this.YoutubeUrl, this.selected_quality)
-        .subscribe(
-          (resp: any) => {
-            this.spinner2 = false;
-            this.Disable = true;
-            this.ResYoutubeUrl = resp['data'][0].file_path;
-          },
-          error => {
-            this.spinner = false;
-            Swal.fire('Alert', 'Something is not right', 'error');
-          }
-        );
-      console.log(this.VideoDetails);
+    if (this.value_tabs === 'youtube') {
+      if (this.YoutubeUrl && this.selected_quality) {
+        this.service
+          .DownloadVideo(this.YoutubeUrl, this.selected_quality)
+          .subscribe(
+            (resp: any) => {
+              this.spinner2 = false;
+              this.Disable = true;
+              this.RespUrl = resp['data'][0].file_path;
+            },
+            error => {
+              this.spinner = false;
+              Swal.fire('Alert', 'Something is not right', 'error');
+            }
+          );
+        console.log(this.VideoDetails);
+      }
+    } else if (this.value_tabs === 'facebook') {
+      if (this.FbUrl && this.selected_quality) {
+        this.fbservices
+          .downloadFile(this.FbUrl, this.selected_quality)
+          .subscribe(
+            (resp: any) => {
+              this.spinner2 = false;
+              this.Disable = true;
+              this.RespUrl = resp['data'][0].file_path;
+              console.log(resp);
+            },
+            error => {
+              this.spinner2 = false;
+              Swal.fire('Alert', 'Something is not right', 'error');
+            }
+          );
+      }
     }
   }
   selectAudio(a: any) {
@@ -242,7 +262,7 @@ export class LandingPageComponent implements OnInit {
 
   Download() {
     setTimeout(() => {
-      FileSaver.saveAs(this.ResYoutubeUrl, this.Videotitle + '.' + this.value1);
+      FileSaver.saveAs(this.RespUrl, this.Videotitle + '.' + this.value1);
 
       // this.service.DeleteFile(this.ResYoutubeUrl).subscribe((resp: any) => {
       //   console.log(resp);

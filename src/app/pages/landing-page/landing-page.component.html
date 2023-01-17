@@ -51,12 +51,19 @@
                         <!-- </div> -->
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
-                        <p-selectButton class="radius-0" [options]="tabs_option" [(ngModel)]="value_tabs" optionLabel="label" optionValue="value" (onChange)='ChangeTab()'>
-                            <ng-template let-item>
-                                <span>{{item.label}}</span>
-                                <i [class]="item.icon"></i>
-                            </ng-template>
-                        </p-selectButton>
+                        <div>
+
+
+                            <p-selectButton class="radius-0" [options]="tabs_option" [(ngModel)]="value_tabs" optionLabel="label" optionValue="value" (onChange)='ChangeTab()'>
+                                <ng-template let-item>
+                                    <!-- <div [class]="item.style"> -->
+                                    <span class="d-none d-lg-block">{{item.label}}</span>
+                                    <i [class]="item.icon"></i>
+                                    <!-- </div> -->
+
+                                </ng-template>
+                            </p-selectButton>
+                        </div>
                         <form class="form-group w-100 m-top-1" [formGroup]="searchVideo">
                             <div class="row justify-content-center">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mx-auto ">

@@ -16,4 +16,12 @@ export class FacebookService {
       shareReplay()
     );
   }
+  downloadFile(url: any, quality: any) {
+    return this.http
+      .post(this.apiRoot.concat('downloadfb'), { url, quality })
+      .pipe(
+        tap(response => {}),
+        shareReplay()
+      );
+  }
 }
