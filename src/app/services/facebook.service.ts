@@ -24,4 +24,10 @@ export class FacebookService {
         shareReplay()
       );
   }
+  DownloadFBAudio(url: any, abr: any) {
+    return this.http.post(this.apiRoot.concat('downloadfb'), { url, abr }).pipe(
+      tap(response => {}),
+      shareReplay()
+    );
+  }
 }

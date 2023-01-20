@@ -7,11 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private service: SearchVideoService){
-
-  }
+  constructor(private service: SearchVideoService) {}
   logoPath = '../../../assets/img/logo-white.png';
-  logoClick(){
-this.service.downloaded=false;
+  logoClick() {
+    this.service.downloaded = false;
+    window.location.reload();
   }
 }

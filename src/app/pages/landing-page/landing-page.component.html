@@ -51,7 +51,7 @@
                         <!-- </div> -->
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
-                        <div>
+                        <div id="tabs">
 
 
                             <p-selectButton class="radius-0" [options]="tabs_option" [(ngModel)]="value_tabs" optionLabel="label" optionValue="value" (onChange)='ChangeTab()'>
@@ -114,7 +114,7 @@
                 </div>
                 <div *ngIf="VideoDetails" class="row justify-content-center mb-5 p-0">
                     <div class="col-11 col-sm-11 col-md-9 col-lg-9 col-xl-7 col-xxl-7 my-4 mx-auto">
-                        <p-selectButton class="radius-0" [options]="stateOptions" [(ngModel)]="value1" (onChange)="ValueChange()" optionLabel="label" optionValue="value"></p-selectButton>
+                        <p-selectButton *ngIf="audio" class="radius-0" [options]="stateOptions" [(ngModel)]="value1" (onChange)="ValueChange()" optionLabel="label" optionValue="value"></p-selectButton>
                         <div class="card w-100">
                             <div class="row m-0 p-0 bg-dark-color">
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 m-0 p-0">
@@ -133,7 +133,7 @@
                                                     <button class="btn btn fw-bold text-white bg-yellow radius-0 border-yellow" [disabled]="!Disable" (click)="Download()">
                                                 Download
                                             </button>
-                                                    <div class="dropdown">
+                                                    <div class="dropdown" *ngIf="Videoquality">
                                                         <button class="btn btn-secondary dropdown-toggle radius-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <span *ngIf="selected_quality">{{selected_quality}}</span>
                                                         <span *ngIf="!selected_quality">Select the Quality</span>
