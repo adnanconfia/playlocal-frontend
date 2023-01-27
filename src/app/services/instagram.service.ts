@@ -16,4 +16,10 @@ export class InstagramService {
       shareReplay()
     );
   }
+  getAudioFile(path: any) {
+    return this.http.post(this.apiUrl.concat('instaudio'), { path }).pipe(
+      tap(response => {}),
+      shareReplay()
+    );
+  }
 }

@@ -16,7 +16,7 @@
                         </div>
                         <div class="youtube text-start ">
 
-                            <p class="fs-5">Welcome to <span class="color-yellow">PlayLocal</span> youtube downloader, just simply paste your link, download video/audio and enjoy listening!.</p>
+                            <p class="fs-5">Welcome to <span class="color-yellow">PlayLocal</span> {{value_tabs}} downloader, just simply paste your link, download video/audio and enjoy listening!.</p>
                         </div>
                     </div>
                     <div class="col-12">
@@ -29,9 +29,10 @@
                                         </span>
                         </div>
 
-                        <p>1. Directly paste the link of video you want to convert.</p>
-                        <p>2. Click "Download" button to see the video thumbnail.</p>
-                        <p>3. Select the video/audio format you want to download, then click "Download" button.</p>
+                        <p>1. Choose the tab Facebook, YouTube, LinkedIn, Instagram.</p>
+                        <p>2. Paste the related link.</p>
+                        <p>3. Click the "Download" button to see the video thumbnail.</p>
+                        <p>4. Select the video/audio format you want to download, then click "Download" button.</p>
                         <!-- <div class="row m-0"> -->
                         <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
                     <div class="text-center">
@@ -130,7 +131,7 @@
                                                 </p>
                                                 <p class="text-white fw-lighter">{{VideoDetails['length']}}</p>
                                                 <div class="d-flex flex-row" *ngIf="!spinner2">
-                                                    <button class="btn btn fw-bold text-white bg-yellow radius-0 border-yellow" [disabled]="!Disable" (click)="Download()">
+                                                    <button class="btn btn fw-bold text-white bg-yellow radius-0 border-yellow" [disabled]="!Disable" (click)="Download(); gototop()">
                                                 Download
                                             </button>
                                                     <div class="dropdown" *ngIf="Videoquality">
@@ -211,18 +212,18 @@
                     </div>
                     <div class="col-12   mx-auto">
                         <p class="fs-5">
-                            Playlocal is the fastest YouTube Downloader application that makes it simple to convert and download videos and audios from YouTube for free and in the highest quality possible. The best option for downloading limitless YouTube videos without registering
-                            is PlayLocal. Directly from YouTube, you may rapidly convert and download hundreds of video and music files. The most astonishing part is that we support all music and video file types, including MP3, MP4, and others, and it's
-                            totally free.
+                            Playlocal offers you best services that helps to download online videos in HD quality from YouTube, Facebook, Instagram, LinkedIn and Tiktok. Playlocal is the fastest video downloader application that makes it simple to converter and download videos,
+                            audios, shorts, and reels from YouTube, Facebook, Instagram, LinkedIn and Tiktok for free and in the highest quality possible. The best option for downloading limitless videos without registering is PlayLocal. Directly from
+                            any mentioned app, you may rapidly convert and download hundreds of video and music files. The most astonishing part is that we support all music and video file types, including MP3, MP4, and others, and it's totally free.
                         </p>
-                        <p class="fs-5">
+                        <!-- <p class="fs-5">
                             Never before has downloading YouTube videos been so simple! Stop wasting time. Simply use our software on your devices to access free YouTube content!
 
 
 
-                        </p>
+                        </p> -->
                         <p>
-                            We make YouTube download process fast and easy.
+                            We make videos download process fast and easy.
                         </p>
                         <p>
                             No more long video buffering times!
@@ -249,21 +250,31 @@
                 <!-- <div id="container-4c1e97229c44e0ff4ccb35b133660cd4"></div> -->
             </div>
             <div class="col-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
-                <div class="row">
+                <div class="row py-lg-4">
 
-                    <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-items-center my-auto">
+                    <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-items-center my-auto lh-2">
                         <h3 class="text-white">
-                            How to Download Youtube Videos online
+                            How to Download <span class="text-capitalize">{{value_tabs}} </span> Videos online
                         </h3>
                         <ul class="text-white">
-                            <li>Copy the link to the video and paste it in the input line.</li>
-                            <li>Click "Download" and wait for the video to be ready.</li>
+                            <li>Choose the tab <span class="text-capitalize">{{value_tabs}} </span>.</li>
+                            <li>Paste the related link in the input line and wait for the video to be ready.</li>
                             <li>Choose your desired option of Audio or Video.</li>
-                            <li>Click download after choosing the download quality you want to download.</li>
+                            <li>Choose the quality you want to download.</li>
+                            <li>Click the download button and the download will start.</li>
                         </ul>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto">
-                        <img src="../../../assets/img/downloading.jpg" alt="">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto" *ngIf='value_tabs=="youtube"'>
+                        <img src="../../../assets/img/youtube.jpg" alt="">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto" *ngIf='value_tabs=="facebook"'>
+                        <img src="../../../assets/img/facebook.jpg" alt="">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto" *ngIf='value_tabs=="instagram"'>
+                        <img src="../../../assets/img/Instagram.jpg" alt="">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto" *ngIf='value_tabs=="linkedin"'>
+                        <img src="../../../assets/img/linkedin.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -280,12 +291,15 @@
 
         <div class="pt-4">
             <div class="row m-0">
-                <!-- <div class="col-12">
-                    <div id="container-6093da6069becfdf183c0631299e7562"></div>
-                </div> -->
                 <div class="col-12">
                     <div id="container-6093da6069becfdf183c0631299e7562"></div>
                 </div>
+            </div>
+            <div class="row m-0">
+                <!-- <div class="col-12">
+                    <div id="container-6093da6069becfdf183c0631299e7562"></div>
+                </div> -->
+
                 <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
                     <!-- <div id="container-4c1e97229c44e0ff4ccb35b133660cd4"></div> -->
 
@@ -305,17 +319,17 @@
                         </div>
 
                         <h4>Countless Conversions</h4>
-                        <p>We provide limitless YouTube to mp3 and mp4 conversion services.</p>
+                        <p>We provide limitless video to mp3 and mp4 conversion services.</p>
                         <h4>Automatic data-fetching</h4>
-                        <p>You only need to copy and paste the YouTube URL to download video.</p>
+                        <p>You only need to copy and paste the URL to download video.</p>
 
                         <h4>No Registration Needed </h4>
-                        <p>You don't have to register in order to download YouTube videos.</p>
+                        <p>You don't have to register in order to download videos.</p>
                         <h4>Compatible with browsers</h4>
                         <p>The newest browsers, including Chrome, Firefox, and Safari, are entirely compatible with our online application.</p>
 
                     </div>
-                    <div class="what-section">
+                    <div class="what-section" *ngIf="value_tabs =='youtube'">
                         <div class="">
                             <h2 class="pt-3 text-capitalize">
                                 What we have?
@@ -339,8 +353,59 @@
 
                         <p>We're happy to inform that you can now convert YouTube videos to mp4 online using our website! This is yet another example of our dedication to providing you with the resources to download videos from YouTube and enjoy them wherever
                             you are!</p>
-                        <p>We're happy to inform that you can now convert YouTube videos to mp4 online using our website! This is yet another example of our dedication to providing you with the resources to download videos from YouTube and enjoy them wherever
-                            you are!</p>
+                    </div>
+                    <!-- Instragram features section -->
+                    <div class="features-section" *ngIf="value_tabs =='instagram'">
+                        <div class="">
+                            <h2 class="pt-3 text-capitalize">
+                                Features of Playlocal Instagram Video / Reels Downloader.
+                            </h2>
+                            <span class="title-border mb-3">
+        
+                                                </span>
+                        </div>
+                        <ul>
+                            <li>Download videos from Instagram fast, simple, and secure.</li>
+                            <li>You don't have to sign into your Instagram account.</li>
+                            <li>Instagram videos and reels can be downloaded by just clicking a button.</li>
+                            <li>Download and save videos and reels in their original quality and resolution.</li>
+
+                            <li>Download and save individual Instagram videos.</li>
+                            <li>Quick downloads: Playlocal offers the current quickest download speed.</li>
+                        </ul>
+                    </div>
+                    <div class="features-section" *ngIf="value_tabs =='facebook'">
+                        <div class="">
+                            <h2 class="pt-3 text-capitalize">
+                                Features of Playlocal Facebook Video / Reels Downloader.
+                            </h2>
+                            <span class="title-border mb-3">
+            
+                                                    </span>
+                        </div>
+
+                        <h4>Highest Quality</h4>
+                        <p>Our Facebook video download helps you download FULL HD, and 4K videos with sound. Most of the current tools only allow HD videos.</p>
+                        <h4>Easy</h4>
+                        <p>Facebook video downloader for every device (mobile phone, PC, or tablet), and every OS (Android, IOS). You don't need to install any software.</p>
+
+                        <h4>Free</h4>
+                        <p>Playlocal FB Downloader - It's always be free. We only place some ads to support our development.</p>
+                    </div>
+                    <div class="features-section" *ngIf="value_tabs =='linkedin'">
+                        <div class="">
+                            <h2 class="pt-3 text-capitalize">
+                                Features of Playlocal LinkedIn Video Downloader.
+                            </h2>
+                            <span class="title-border mb-3">
+            
+                                                    </span>
+                        </div>
+                        <ul>
+                            <li>No restrictions, no fees—just download..</li>
+                            <li>The website is available 24/7.</li>
+                            <li>The website is really convenient to use.</li>
+                        </ul>
                     </div>
                     <div class="faq-section">
                         <div class="">
@@ -359,10 +424,27 @@
 
                         <h4>Is Playlocal a limited number of uses? </h4>
                         <p>Our "Youtube Downloader" tool allows you to download unlimited YouTube video and all for free.</p>
-                        <h4>What formats does Playlocal allow to convert YouTube video to?</h4>
-                        <p>We support convert and download video from youtube in a variety of formats like: MP4 and MP3. You can watch it right on the device without download any additional software.</p>
+                        <h4>What formats does Playlocal allow to convert videos to?</h4>
+                        <p>We support convert and download videos from YouTube, Instagram, Facebook, and LinkedIn in a variety of formats like: MP4 and MP3. You can watch it right on the device without download any additional software.</p>
                         <h4>Can we download youtube shorts or reels?</h4>
                         <p>Yes you can, simply paste the link in search bar and click on download.</p>
+
+                        <h4>Where can I find the downloaded files? </h4>
+                        <p>After downloading Instagram video or photo the file can be found in the folder, which is set by default to save all content from the Internet. If you do not have other settings, then the default folder is called “Downloads”.</p>
+                        <h4>Is the Instagram video downloader free?</h4>
+                        <p>Yes! And our video downloader will stay free for everyone. We are happy to help people and in order to keep the Instagram video download tool alive, we let our advertisers pay to support the service.</p>
+                        <h4>Is using IG video downloader legal?</h4>
+                        <p>Yes. We are 100% safe and legal. But the way you use this video matters. If it’s for your personal use, it’s OK. But you can't broadcast it for gaining income. Otherwise, you are to ask the author and mention him or her whenever
+                            you use this content.</p>
+
+
+                        <h4>Can I download Live Facebook videos? </h4>
+                        <p>Yes, you can download Facebook Live videos but only after they finish streaming.</p>
+                        <h4>Does Playlocal store downloaded videos or keep a copy of the video?</h4>
+                        <p>No, Playlocal does not host videos nor keep copies of downloaded videos.</p>
+                        <h4>Am I allowed to download LinkedIn Videos?</h4>
+                        <p>It is perfectly safe, don’t worry. All content that can be found in the public domain, non-private accounts is allowed to be downloaded by any LinkedIn user. I bet you’ve thought about keeping content that you’ve found on LinkedIn
+                            at least once.</p>
                     </div>
 
                 </div>

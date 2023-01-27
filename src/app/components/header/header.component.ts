@@ -1,5 +1,6 @@
 import { SearchVideoService } from 'src/app/services/search-video.service';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private service: SearchVideoService) {}
+  constructor(private service: SearchVideoService, private router: Router) {}
   logoPath = '../../../assets/img/logo-white.png';
   logoClick() {
     this.service.downloaded = false;
-    window.location.reload();
+    this.router.navigate(['']);
   }
 }
