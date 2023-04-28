@@ -7,12 +7,12 @@ import { tap, shareReplay } from 'rxjs/operators';
 })
 export class SearchVideoService {
   apiRoot = environment.apiURL;
-  downloaded= false;
-  VideoDetails :any=null;
+  downloaded = false;
+  VideoDetails: any = null;
 
   constructor(private http: HttpClient) {}
   GetVedioDetails(url: any) {
-    return this.http.post(this.apiRoot.concat('videodetails'),{ url }).pipe(
+    return this.http.post(this.apiRoot.concat('videodetails'), { url }).pipe(
       tap(response => {}),
       shareReplay()
     );
@@ -25,18 +25,17 @@ export class SearchVideoService {
         shareReplay()
       );
   }
-  DeleteFile(url:any){
+  DeleteFile(url: any) {
     const options = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }),
       body: {
-       
-        url: url,
-      },
+        url: url
+      }
     };
-    return this.http.delete(this.apiRoot.concat('videodetails'),options).pipe(
-      tap(response => { }),
+    return this.http.delete(this.apiRoot.concat('videodetails'), options).pipe(
+      tap(response => {}),
       shareReplay()
     );
   }
@@ -44,12 +43,14 @@ export class SearchVideoService {
     return this.http.post(this.apiRoot.concat('download'), { url, abr }).pipe(
       tap(response => {}),
       shareReplay()
-    );}
-    DownloadFile(url:any){
-      return this.http.get<Blob>(url, { observe: 'response', responseType: 'blob' as 'json' }).pipe(
-        tap(response => { }),
+    );
+  }
+  DownloadFile(url: any) {
+    return this.http
+      .get<Blob>(url, { observe: 'response', responseType: 'blob' as 'json' })
+      .pipe(
+        tap(response => {}),
         shareReplay()
       );
-    }
-  
+  }
 }

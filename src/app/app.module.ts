@@ -15,6 +15,9 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { FileSaverModule } from 'ngx-filesaver';
 import { ThanksComponent } from './pages/thanks/thanks.component';
 import { TermsComponent } from './pages/terms/terms.component';
+// import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {ProgressBarModule} from 'primeng/progressbar';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,11 @@ import { TermsComponent } from './pages/terms/terms.component';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     FileSaverModule,
-    SelectButtonModule
+    SelectButtonModule,
+    ProgressBarModule,
+    AccordionModule
+
+    // MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

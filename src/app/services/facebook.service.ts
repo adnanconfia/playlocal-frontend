@@ -18,7 +18,14 @@ export class FacebookService {
   }
   downloadFile(url: any, quality: any) {
     return this.http
-      .post(this.apiRoot.concat('downloadfb'), { url, quality })
+      .post(
+        this.apiRoot.concat('downloadfb'),
+        { url, quality },
+        {
+          reportProgress: true,
+          observe: 'events'
+        }
+      )
       .pipe(
         tap(response => {}),
         shareReplay()

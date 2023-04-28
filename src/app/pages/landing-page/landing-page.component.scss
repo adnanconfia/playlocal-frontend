@@ -1,0 +1,42 @@
+.btn-tranparent {
+    background: transparent;
+    border: 3px solid #fff;
+    color: #fff;
+    &:hover {
+        border: 3px solid #fccc04;
+        background: #fccc04;
+        color: #000;
+    }
+}
+
+.radius-30 {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+.border-top {
+    border-top: 2px solid;
+}
+
+.lh-40 {
+    line-height: 40px !important;
+}
+
+.btn-dwn {
+    // border: 2px solid #04fc78;
+    background-color: green;
+    color: #fff;
+    &:hover {
+        background: #fccc04;
+        color: #000;
+    }
+}
+
+.btn-active {
+    background: #fccc04 !important;
+    border: 3px solid #fccc04 !important;
+    color: #000 !important;
+}

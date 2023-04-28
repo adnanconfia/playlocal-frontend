@@ -1,4 +1,300 @@
-<div id="home" class="vh-75 pb-5 mb-5">
+<section class="mt-120px">
+    <div class="row m-0 p-0 d-flex justify-content-center">
+
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 box-shadow-4 br-10px py-5 px-3 bg-white">
+            <p class="px-3">Select the tab Facebook, Instagram, Youtube or Linkedin</p>
+            <div id="tabs" class="px-3">
+
+
+                <p-selectButton [options]="tabs_option" [(ngModel)]="value_tabs" optionLabel="label" optionValue="value" (onChange)='ChangeTab()'>
+                    <ng-template let-item>
+                        <i [class]="item.icon"></i>
+                        <span class="d-none d-lg-block mx-2">{{item.label}}</span>
+
+
+                    </ng-template>
+                </p-selectButton>
+            </div>
+            <form class="form-group w-100 mt-4 px-3 " [formGroup]="searchVideo">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mx-auto ">
+                        <div class="align-items-center d-flex justify-content-center">
+                            <div class="px-0 w-100">
+                                <div class="search position-relative">
+                                    <i class="fa fa-search position-absolute"></i>
+                                    <input (paste)="searching($event)" formControlName="url" type="text" name="" id="url" placeholder="Paste Your {{value_tabs}} Link" class="form-control searchInput br-36px pl-60">
+
+                                </div>
+                            </div>
+                            <div class="p-0 ms-2">
+                                <button (click)="searching($event)" class="btn btn-download br-36px bg-dark-color  text-white px-2 px-sm-2 px-lg-4" [disabled]="spinner || searchVideo.invalid ">Download</button>
+                            </div>
+
+                        </div>
+                        <small class="text-danger mt-2" *ngIf="url_error ">Not an appropriate link for {{value_tabs}}!
+                        </small>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+    <div class="row p-3 p-sm-3 p-lg-0 mx-3 mx-sm-3 mx-md-3 mx-lg-0 my-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 p-0 ">
+            <div class="row d-flex align-items-center">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4  m-0 p-0">
+                    <img src="../../../assets/img/thumbnail.png" alt="" class="thumbnail-img">
+                </div>
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 mt-3 mt-sm-3 mt-md-0 mt-lg-0">
+                    <div class="ms-4">
+                        <h4 class="fw-500 fs-23px">El Senor pf the Cielos</h4>
+                        <p class="fw-400">Best Videos of the Week! | The best videos of the week!</p>
+                        <div class="d-flex  w-100 py-3">
+                            <button class="btn bg-dark-solid radius-30 py-2 px-4 fw-bold me-3" [class.btn-active]="value1 == 1" (click)="Audio()">
+                                                                    Audio
+                                                                </button>
+                            <button class="btn bg-dark-solid radius-30 py-2 px-4 fw-bold" [class.btn-active]="value1 == 0" (click)="Video()">
+                                                                    Video
+                                                                </button>
+                        </div>
+                        <div class="w-100">
+                            <table class="table table-borderless">
+
+                                <tbody *ngIf="value1==0">
+                                    <tr class="lh-40">
+                                        <td>(mp4) 1080p</td>
+                                        <td>180MB</td>
+                                        <td>
+                                            <button class="btn btn-dwn radius-30 px-1 px-sm-1 px-md-4 px-lg-4 px-xxl-4 py-2"> Download</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="lh-40">
+                                        <td>(mp4) 1080p</td>
+                                        <td>180MB</td>
+                                        <td>
+                                            <button class="btn btn-dwn radius-30 px-1 px-sm-1 px-md-4 px-lg-4 px-xxl-4 py-2"> Download</button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                                <tbody *ngIf="value1== 1">
+                                    <tr class="lh-40">
+                                        <td>(mp3) 320kbps</td>
+                                        <td>18MB</td>
+                                        <td>
+                                            <button class="btn btn-dwn radius-30 px-1 px-sm-1 px-md-4 px-lg-4 px-xxl-4 py-2"> Download</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="lh-40">
+                                        <td>(mp3) 320kbps</td>
+                                        <td>18MB</td>
+                                        <td>
+                                            <button class="btn btn-dwn radius-30 px-1 px-sm-1 px-md-4 px-lg-4 px-xxl-4 py-2"> Download</button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+
+    </div>
+
+    <div class="row p-3 p-sm-3 p-lg-0 mx-0 my-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 p-0 ">
+            <p class="terms ">By using our service you are accepting our <a class="color-yellow " (click)="Terms() ">Terms & Conditions.</a></p>
+            <p>Playlocal offers you best services that helps to download online videos in HD quality from YouTube, Facebook, Instagram, LinkedIn and Tiktok. Playlocal is the fastest video downloader application that makes it simple to converter and download
+                videos, audios, shorts, and reels from YouTube, Facebook, Instagram, LinkedIn and Tiktok for free and in the highest quality possible. The best option for downloading limitless videos without registering is PlayLocal. Directly from any...
+                <span class="fw-bold cursor-pointer">See more</span></p>
+
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+    </div>
+
+
+
+</section>
+<section class="howtodownload">
+    <div class=" row  py-5  m-0 ">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 p-0">
+            <div class="row m-0">
+                <div class="col col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 align-items-center my-auto px-3 px-sm-3 px-lg-0 ">
+                    <h3 class="text-white fs-35px fw-500">
+                        How to<span class="color-yellow"> Download </span>desired<br> platform Videos online
+                    </h3>
+                    <ul class="text-white fs-20px ps-4 fw-normal mt-3">
+                        <li>Choose the desired platform tab.</li>
+                        <li>Paste the related link in the input line and wait for the video to be ready.</li>
+                        <li>Choose your desired option of Audio or Video.</li>
+                        <li>Choose the quality you want to download.</li>
+                        <li>Click the download button and the download will start.</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 my-auto text-center text-sm-center text-lg-end ">
+                    <img src="../../../assets/img/download.png " alt=" ">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+
+    </div>
+</section>
+<section class="what-we-provide">
+    <div class=" row  py-5  m-0 ">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 px-3 px-sm-3 px-lg-0">
+            <h3 class="text-center fs-35px fw-500">What we <span class="color-yellow">Provide?</span></h3>
+            <div class="row py-5 px-3 px-sm-3 px-lg-0 text-center text-sm-center text-lg-start">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-0">
+                    <div class=" d-flex  justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-start">
+                        <div class="bg-light-blue wh-56px br-50 text-center pt-14px ">
+                            <img src="../../../assets/img/conversation.png" alt="">
+                        </div>
+                    </div>
+                    <div class="px-3 px-sm-3 px-md-3 px-lg-0">
+                        <p class="fw-400 fs-20 my-3">
+                            Countless Conversions
+                        </p>
+                        <p class="text-black-50">We provide limitless video <br>to mp3 and mp4 conversion services.</p>
+                    </div>
+
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-0">
+                    <div class="d-flex  justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-start">
+                        <div class="bg-light-pink wh-56px br-50 text-center pt-14px ">
+                            <img src="../../../assets/img/data-fetching.png" alt="">
+                        </div>
+                    </div>
+                    <div class="px-3 px-sm-3 px-md-3 px-lg-0">
+                        <p class="fw-400 fs-20 my-3">
+                            Automatic data-fetching
+                        </p>
+                        <p class="text-black-50">You only need to copy and paste the URL to download video.</p>
+                    </div>
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-0">
+                    <div class="d-flex  justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-start">
+                        <div class="bg-light-green wh-56px br-50 text-center pt-14px ">
+                            <img src="../../../assets/img/Icon-registration.png" alt="">
+                        </div>
+                    </div>
+                    <div class="px-3 px-sm-3 px-md-3 px-lg-0">
+                        <p class="fw-400 fs-20 my-3">
+                            No Registration Needed
+                        </p>
+                        <p class="text-black-50">You don't have to register in order to download videos.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-0">
+                    <div class="d-flex  justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-start">
+                        <div class=" bg-light-yellow wh-56px br-50 text-center pt-14px ">
+                            <img src="../../../assets/img/Icon.png" alt="">
+                        </div>
+                    </div>
+                    <div class="px-3 px-sm-3 px-md-3 px-lg-0">
+                        <p class="fw-400 fs-20 my-3">
+                            Compatible with browsers
+                        </p>
+                        <p class="text-black-50">The newest browsers, including Chrome, Firefox, and Safari, are entirely compatible with our online application.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+    </div>
+</section>
+<section class="featues bg-dark-solid">
+    <div class=" row  m-0 ">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 p-0">
+            <div class="row m-0">
+                <div class="col col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 align-items-center my-auto px-3 px- py-5">
+                    <h3 class="fs-35px fw-500">
+                        Features Of<span class="color-yellow"> Playlocal </span><br>Downloader App
+                    </h3>
+                    <ul class="fs-20px ps-4 fw-normal mt-2">
+                        <li>Download videos from playlocal fast, simple, and secure.</li>
+                        <li>You don't have to sign into your social accounts.</li>
+                        <li>Videos, audios and reels can be downloaded by just clicking a button.</li>
+                        <li>Download and save videos, audios and reels in their original quality and resolution.</li>
+                        <li>Download and save individual videos.</li>
+                        <li>Quick downloads: Playlocal offers the current quickest download speed.</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 h-100 m-0 p-0 text-center text-sm-center text-lg-end ">
+                    <img src="../../../assets/img/features.png " class="w-100">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="faqs">
+    <div class=" row  m-0 py-5 px-3 px-sm-3 px-lg-3">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 p-0">
+            <h3 class="fs-35px fw-500">
+                FAQs
+            </h3>
+            <p-accordion [multiple]="true" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
+                <p-accordionTab header="How to download video from YouTube on Android?">
+                    <p>
+                        We provide limitless video to mp3 and mp4 conversion services.
+                    </p>
+                </p-accordionTab>
+                <p-accordionTab header="Is Playlocal a limited number of uses?">
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                    </p>
+                </p-accordionTab>
+
+            </p-accordion>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 d-none d-lg-block">
+
+
+        </div>
+    </div>
+</section>
+
+<!-- <div id="home" class="vh-75 pb-5 mb-5">
     <div class="my-5">
 
 
@@ -33,72 +329,8 @@
                         <p>2. Paste the related link.</p>
                         <p>3. Click the "Download" button to see the video thumbnail.</p>
                         <p>4. Select the video/audio format you want to download, then click "Download" button.</p>
-                        <!-- <div class="row m-0"> -->
-                        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
-                    <div class="text-center">
-                        <h2 class="pt-3 text-capitalize">
-                            Instructions
-                        </h2>
-                        <span class="title-border mb-3">
-
-                                        </span>
-                    </div>
-
-                    <p>1. Directly paste the link of video you want to convert.</p>
-                    <p>2. Click "Download" button to see the video thumbnail.</p>
-                    <p>3. Select the video/audio format you want to download, then click "Download" button.</p>
-                </div> -->
-
-                        <!-- </div> -->
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
-                        <div id="tabs">
-
-
-                            <p-selectButton class="radius-0" [options]="tabs_option" [(ngModel)]="value_tabs" optionLabel="label" optionValue="value" (onChange)='ChangeTab()'>
-                                <ng-template let-item>
-                                    <!-- <div [class]="item.style"> -->
-                                    <span class="d-none d-lg-block">{{item.label}}</span>
-                                    <i [class]="item.icon"></i>
-                                    <!-- </div> -->
-
-                                </ng-template>
-                            </p-selectButton>
-                        </div>
-                        <form class="form-group w-100 m-top-1" [formGroup]="searchVideo">
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mx-auto ">
-                                    <div class="align-items-center d-flex justify-content-center">
-                                        <div class="px-0 w-100">
-                                            <div class="search position-relative">
-                                                <i class="fa fa-search position-absolute"></i>
-                                                <input (paste)="searching($event)" formControlName="url" type="text" name="" id="url" placeholder="Paste Your {{value_tabs}} Link" class="form-control searchInput  pl-60 fw-semibold">
-
-                                            </div>
-                                        </div>
-                                        <div class="p-0">
-                                            <button (click)="searching($event)" class="btn btn-download bg-dark-color  text-white px-2" [disabled]="spinner || searchVideo.invalid ">Download</button>
-                                        </div>
-
-                                    </div>
-                                    <small class="text-danger mt-2" *ngIf="url_error ">Not an appropriate link for {{value_tabs}}!
-                                    </small>
-
-
-                                </div>
-
-
-                            </div>
-
-
-                        </form>
-                        <!-- <ngx-spinner [name]="spinner1" [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-                        loading...
-                    </ngx-spinner> -->
-
 
                     </div>
-
 
 
 
@@ -113,207 +345,178 @@
                         <p>Processing link to download.Stay on the page.</p>
                     </div>
                 </div>
-                <div *ngIf="VideoDetails" class="row justify-content-center mb-5 p-0">
-                    <div class="col-11 col-sm-11 col-md-9 col-lg-9 col-xl-7 col-xxl-7 my-4 mx-auto">
-                        <p-selectButton *ngIf="audio" class="radius-0" [options]="stateOptions" [(ngModel)]="value1" (onChange)="ValueChange()" optionLabel="label" optionValue="value"></p-selectButton>
+                <div class="row  justify-content-center  mb-5 p-0" *ngIf="VideoDetails">
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 col-xxl-10 my-4 mx-auto">
                         <div class="card w-100">
                             <div class="row m-0 p-0 bg-dark-color">
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 m-0 p-0">
+                                <div class="col-12  m-0 p-0">
                                     <img src="{{ thumbnail }}" alt="" class="w-100 h-100">
                                 </div>
-                                <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8 d-flex flex-column justify-content-center align-content-center youtube-content">
-                                    <div class="row ms-2">
-                                        <div class="col-12 text-start">
-                                            <div class="">
+                                <div class="row d-flex justify-content-center align-items-center py-3" *ngIf="!spinner2">
+                                    <div class="col-12 col-sm-12 col-md-10 col-xl-8 col-xxl-8">
+                                        <div class="text-center">
 
-                                                <p class="text-white fw-bold">
-                                                    {{Videotitle | slice:0:60}}...
-                                                </p>
-                                                <p class="text-white fw-lighter">{{VideoDetails['length']}}</p>
-                                                <div class="d-flex flex-row" *ngIf="!spinner2">
-                                                    <button class="btn btn fw-bold text-white bg-yellow radius-0 border-yellow" [disabled]="!Disable" (click)="Download(); gototop()">
-                                                Download
-                                            </button>
-                                                    <div class="dropdown" *ngIf="Videoquality">
-                                                        <button class="btn btn-secondary dropdown-toggle radius-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <span *ngIf="selected_quality">{{selected_quality}}</span>
-                                                        <span *ngIf="!selected_quality">Select the Quality</span>
-                                                    </button>
-                                                        <div class="dropdown-menu radius-0" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" *ngIf="value1=='mp4'">
-                                                                <div *ngFor='let r of Videoquality; index as i;' (click)="selectValue(r)">
-                                                                    <div class="d-flex flex-row justify-content-between _hover">
-                                                                        <span class="">
-                                                                        MP4
-                                                                    </span>
-                                                                        <span>
-                                                                                {{r}}
-                                                                    </span>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-
-                                                            <a class="dropdown-item" *ngIf="value1=='mp3'">
-                                                                <div *ngFor='let a of audio; index as i;' (click)="selectAudio(a)">
-                                                                    <div class="d-flex flex-row justify-content-between _hover">
-                                                                        <span class="">
-                                                                                MP3
-                                                                            </span>
-                                                                        <span>
-                                                                                        {{a}}
-                                                                            </span>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- <form>
-                                                        <select class="form-select radius-0" aria-label="Default select example">
-                                                            <option selected>Select the Quality</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                          </select>
-                                                    </form> -->
-
-
-
-                                                </div>
+                                            <div class="d-flex justify-content-around w-100 py-3">
+                                                <button class="btn btn-tranparent radius-30 py-2 px-4 fw-bold" [class.btn-active]="value1 == 1" (click)="Audio()">
+                                                                            Audio
+                                                                        </button>
+                                                <button class="btn btn-tranparent radius-30 py-2 px-4 fw-bold" [class.btn-active]="value1 == 0" (click)="Video()">
+                                                                            Video
+                                                                        </button>
                                             </div>
-                                        </div>
+                                            <div class="w-100 text-center">
+                                                <table class="table table-borderless text-white-50">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Quality</th>
+                                                            <th>File Size</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="border-top" *ngIf="value1==0">
+                                                        <tr class="lh-40" *ngFor="let v of Videoquality">
+                                                            <td>{{ v }}</td>
+                                                            <td>180MB</td>
+                                                            <td>
+                                                                <button class="btn btn-dwn radius-30 px-1 px-sm-1 px-md-4 px-lg-4 px-xxl-4 py-2" (click)="DownFile(v)"> Download</button>
+                                                            </td>
+                                                        </tr>
 
-                                    </div>
-                                    <div class="row justify-content-center text-center" *ngIf="spinner2">
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8 mt-2">
-                                            <div class="spinner-border color-yellow" role="status">
-                                                <span class="visually-hidden"></span>
+                                                    </tbody>
+                                                    <tbody class="border-top" *ngIf="value1== 1">
+                                                        <tr class="lh-40" *ngFor="let a of audio">
+                                                            <td>{{ a }}</td>
+                                                            <td>180MB</td>
+                                                            <td>
+                                                                <button class="btn btn-dwn radius-30 px-1 px-sm-1 px-md-4 px-lg-4 px-xxl-4 py-2" (click)="DownFile(a)"> Download</button>
+                                                            </td>
+                                                        </tr>
 
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <!-- <p>Downloading...Stay on the page.</p> -->
+
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row justify-content-center text-center " *ngIf="spinner2">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8 mt-2 ">
+                                        <div class="py-5">
+                                            <div class="spinner-border color-yellow " role="status">
+                                                <span class="visually-hidden "></span>
+
+                                            </div>
+
+                                            <div>
+                                           
+                                                <div class="progress-bar">
+                                                    <div class="progress" [style.width.%]="progress"></div>
+                                                </div>
+                                            </div>
+                                            <p class="py-3 text-white">Downloading the file.. stay on page</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
+                
 
-                <!-- <div class="row">
-                    <div class="col-12">
-                        <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
+
+                <div class="row justify-content-center text-start mb-5 m-0 ">
+                    <div class="col-12 mt-3 ">
+                        <p class="terms ">By using our service you are accepting our <a class="color-yellow " (click)="Terms() ">Terms & Conditions.</a></p>
                     </div>
-                </div> -->
-                <div class="row justify-content-center  text-start mb-5 m-0">
-                    <div class="col-12 mt-3">
-                        <p class="terms">By using our service you are accepting our <a class="color-yellow" (click)="Terms()">Terms & Conditions.</a></p>
-                    </div>
-                    <div class="col-12   mx-auto">
-                        <p class="fs-5">
+                    <div class="col-12 mx-auto ">
+                        <p class="fs-5 ">
                             Playlocal offers you best services that helps to download online videos in HD quality from YouTube, Facebook, Instagram, LinkedIn and Tiktok. Playlocal is the fastest video downloader application that makes it simple to converter and download videos,
                             audios, shorts, and reels from YouTube, Facebook, Instagram, LinkedIn and Tiktok for free and in the highest quality possible. The best option for downloading limitless videos without registering is PlayLocal. Directly from
                             any mentioned app, you may rapidly convert and download hundreds of video and music files. The most astonishing part is that we support all music and video file types, including MP3, MP4, and others, and it's totally free.
                         </p>
-                        <!-- <p class="fs-5">
-                            Never before has downloading YouTube videos been so simple! Stop wasting time. Simply use our software on your devices to access free YouTube content!
-
-
-
-                        </p> -->
+                      
                         <p>
                             We make videos download process fast and easy.
                         </p>
                         <p>
                             No more long video buffering times!
                         </p>
-                        <!-- <p class="text-start mt-2">By using our service you accept our <a class="color-yellow text-decoration-none">Terms and service</a></p> -->
+                       
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-2 d-none d-lg-block">
-                <div id="container-6a55a2923077bb63a8754fb40ef5dbb3"></div>
+            <div class="col-12 col-md-12 col-lg-2 d-none d-lg-block ">
+                <div id="container-6a55a2923077bb63a8754fb40ef5dbb3 "></div>
             </div>
-            <!-- <div class="col-12 ">
-                <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-            </div> -->
+            
 
         </div>
-        <app-thanks *ngIf="this.service.downloaded"></app-thanks>
-        <!-- How to download -->
-        <div class=" row bg-dark-color py-4 howtodownload m-0">
-            <!-- <div class="col-12">
-                <div id="container-6093da6069becfdf183c0631299e7562"></div>
-            </div> -->
-            <div class="col-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
-                <!-- <div id="container-4c1e97229c44e0ff4ccb35b133660cd4"></div> -->
+        <app-thanks *ngIf="this.service.downloaded "></app-thanks>
+        
+        <div class=" row bg-dark-color py-4 howtodownload m-0 ">
+            
+            <div class="col-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block ">
+                
             </div>
-            <div class="col-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
-                <div class="row py-lg-4">
+            <div class="col-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 ">
+                <div class="row py-lg-4 ">
 
-                    <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-items-center my-auto lh-2">
-                        <h3 class="text-white">
-                            How to Download <span class="text-capitalize">{{value_tabs}} </span> Videos online
+                    <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-items-center my-auto lh-2 ">
+                        <h3 class="text-white ">
+                            How to Download <span class="text-capitalize ">{{value_tabs}} </span> Videos online
                         </h3>
-                        <ul class="text-white">
-                            <li>Choose the tab <span class="text-capitalize">{{value_tabs}} </span>.</li>
+                        <ul class="text-white ">
+                            <li>Choose the tab <span class="text-capitalize ">{{value_tabs}} </span>.</li>
                             <li>Paste the related link in the input line and wait for the video to be ready.</li>
                             <li>Choose your desired option of Audio or Video.</li>
                             <li>Choose the quality you want to download.</li>
                             <li>Click the download button and the download will start.</li>
                         </ul>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto" *ngIf='value_tabs=="youtube"'>
-                        <img src="../../../assets/img/youtube.jpg" alt="">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto " *ngIf='value_tabs=="youtube"'>
+                        <img src="../../../assets/img/youtube.jpg " alt=" ">
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto" *ngIf='value_tabs=="facebook"'>
-                        <img src="../../../assets/img/facebook.jpg" alt="">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto " *ngIf='value_tabs=="facebook"'>
+                        <img src="../../../assets/img/facebook.jpg " alt=" ">
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto" *ngIf='value_tabs=="instagram"'>
-                        <img src="../../../assets/img/Instagram.jpg" alt="">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto " *ngIf='value_tabs=="instagram"'>
+                        <img src="../../../assets/img/Instagram.jpg " alt=" ">
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto" *ngIf='value_tabs=="linkedin"'>
-                        <img src="../../../assets/img/linkedin.jpg" alt="">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-auto " *ngIf='value_tabs=="linkedin"'>
+                        <img src="../../../assets/img/linkedin.jpg " alt=" ">
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
-                <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-            </div> -->
-            <!-- <div class="col-12">
-                <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-
-            </div> -->
+            
 
 
         </div>
 
-        <div class="pt-4">
-            <div class="row m-0">
-                <div class="col-12">
-                    <div id="container-6093da6069becfdf183c0631299e7562"></div>
+        <div class="pt-4 ">
+            <div class="row m-0 ">
+                <div class="col-12 ">
+                    <div id="container-6093da6069becfdf183c0631299e7562 "></div>
                 </div>
             </div>
-            <div class="row m-0">
-                <!-- <div class="col-12">
-                    <div id="container-6093da6069becfdf183c0631299e7562"></div>
-                </div> -->
+            <div class="row m-0 ">
+                
 
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
-                    <!-- <div id="container-4c1e97229c44e0ff4ccb35b133660cd4"></div> -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block ">
+                    
 
 
-                    <div id="container-4c1e97229c44e0ff4ccb35b133660cd4"></div>
+                    <div id="container-4c1e97229c44e0ff4ccb35b133660cd4 "></div>
 
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
-                    <div class="what-provide-section">
-                        <div class="">
-                            <h2 class="pt-3 text-capitalize">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0 ">
+                    <div class="what-provide-section ">
+                        <div class=" ">
+                            <h2 class="pt-3 text-capitalize ">
                                 What we provide?
                             </h2>
-                            <span class="title-border mb-3">
+                            <span class="title-border mb-3 ">
 
                                         </span>
                         </div>
@@ -329,12 +532,12 @@
                         <p>The newest browsers, including Chrome, Firefox, and Safari, are entirely compatible with our online application.</p>
 
                     </div>
-                    <div class="what-section" *ngIf="value_tabs =='youtube'">
-                        <div class="">
-                            <h2 class="pt-3 text-capitalize">
+                    <div class="what-section " *ngIf="value_tabs=='youtube' ">
+                        <div class=" ">
+                            <h2 class="pt-3 text-capitalize ">
                                 What we have?
                             </h2>
-                            <span class="title-border mb-3">
+                            <span class="title-border mb-3 ">
         
                                                 </span>
                         </div>
@@ -342,11 +545,11 @@
                         <p>YouTube to MP4.</p>
                         <p>YouTube video downloader.</p>
                         <p>YouTube Shorts / Reels downloader.</p>
-                        <div class="">
-                            <h2 class="pt-3 text-capitalize">
+                        <div class=" ">
+                            <h2 class="pt-3 text-capitalize ">
                                 Convert YouTube videos to MP3 and MP4What we have?
                             </h2>
-                            <span class="title-border mb-3">
+                            <span class="title-border mb-3 ">
     
                                             </span>
                         </div>
@@ -354,13 +557,13 @@
                         <p>We're happy to inform that you can now convert YouTube videos to mp4 online using our website! This is yet another example of our dedication to providing you with the resources to download videos from YouTube and enjoy them wherever
                             you are!</p>
                     </div>
-                    <!-- Instragram features section -->
-                    <div class="features-section" *ngIf="value_tabs =='instagram'">
-                        <div class="">
-                            <h2 class="pt-3 text-capitalize">
+                   
+                    <div class="features-section " *ngIf="value_tabs=='instagram' ">
+                        <div class=" ">
+                            <h2 class="pt-3 text-capitalize ">
                                 Features of Playlocal Instagram Video / Reels Downloader.
                             </h2>
-                            <span class="title-border mb-3">
+                            <span class="title-border mb-3 ">
         
                                                 </span>
                         </div>
@@ -374,12 +577,12 @@
                             <li>Quick downloads: Playlocal offers the current quickest download speed.</li>
                         </ul>
                     </div>
-                    <div class="features-section" *ngIf="value_tabs =='facebook'">
-                        <div class="">
-                            <h2 class="pt-3 text-capitalize">
+                    <div class="features-section " *ngIf="value_tabs=='facebook' ">
+                        <div class=" ">
+                            <h2 class="pt-3 text-capitalize ">
                                 Features of Playlocal Facebook Video / Reels Downloader.
                             </h2>
-                            <span class="title-border mb-3">
+                            <span class="title-border mb-3 ">
             
                                                     </span>
                         </div>
@@ -392,12 +595,12 @@
                         <h4>Free</h4>
                         <p>Playlocal FB Downloader - It's always be free. We only place some ads to support our development.</p>
                     </div>
-                    <div class="features-section" *ngIf="value_tabs =='linkedin'">
-                        <div class="">
-                            <h2 class="pt-3 text-capitalize">
+                    <div class="features-section " *ngIf="value_tabs=='linkedin' ">
+                        <div class=" ">
+                            <h2 class="pt-3 text-capitalize ">
                                 Features of Playlocal LinkedIn Video Downloader.
                             </h2>
-                            <span class="title-border mb-3">
+                            <span class="title-border mb-3 ">
             
                                                     </span>
                         </div>
@@ -407,23 +610,23 @@
                             <li>The website is really convenient to use.</li>
                         </ul>
                     </div>
-                    <div class="faq-section">
-                        <div class="">
-                            <h2 class="pt-3 text-capitalize">
+                    <div class="faq-section ">
+                        <div class=" ">
+                            <h2 class="pt-3 text-capitalize ">
                                 FAQ
                             </h2>
-                            <span class="title-border mb-3">
+                            <span class="title-border mb-3 ">
             
                                                     </span>
                         </div>
 
                         <h4>How to download video from YouTube on Android?</h4>
-                        <p>Paste the URL of the YT video or playlist in the input field and tap on the "Download" button. In the dropdown menu, you will see your YouTube song..</p>
+                        <p>Paste the URL of the YT video or playlist in the input field and tap on the "Download " button. In the dropdown menu, you will see your YouTube song..</p>
                         <h4>Is downloading a YouTube video illegal?</h4>
                         <p>Generally, it's only illegal if the content is copyrighted and you didn't have permission to make copies of it. If you're downloading a YouTube video for personal use, it doesn't break anything.</p>
 
                         <h4>Is Playlocal a limited number of uses? </h4>
-                        <p>Our "Youtube Downloader" tool allows you to download unlimited YouTube video and all for free.</p>
+                        <p>Our "Youtube Downloader " tool allows you to download unlimited YouTube video and all for free.</p>
                         <h4>What formats does Playlocal allow to convert videos to?</h4>
                         <p>We support convert and download videos from YouTube, Instagram, Facebook, and LinkedIn in a variety of formats like: MP4 and MP3. You can watch it right on the device without download any additional software.</p>
                         <h4>Can we download youtube shorts or reels?</h4>
@@ -448,110 +651,15 @@
                     </div>
 
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block ">
+                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c "></div>
 
                 </div>
-                <!-- <div class="col-12">
-
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div> -->
+                
 
             </div>
 
-            <!-- <div class="row m-0">
-                <div class="col-12">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block"></div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
-                    <div class="">
-                        <h2 class="pt-3 text-capitalize">
-                            What we have?
-                        </h2>
-                        <span class="title-border mb-3">
-
-                                        </span>
-                    </div>
-
-
-
-                    <p>YouTube to MP3.</p>
-                    <p>YouTube to MP4.</p>
-                    <p>YouTube video downloader.</p>
-                    <p>YouTube Shorts / Reels downloader.</p>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block"></div>
-                <div class="col-12">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-            </div> -->
-            <!-- <div class="row m-0">
-                <div class="col-12">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
-                    <div class="">
-                        <h2 class="pt-3 text-capitalize">
-                            Convert YouTube videos to MP3 and MP4What we have?
-                        </h2>
-                        <span class="title-border mb-3">
-
-                                        </span>
-                    </div>
-
-                    <p>We're happy to inform that you can now convert YouTube videos to mp4 online using our website! This is yet another example of our dedication to providing you with the resources to download videos from YouTube and enjoy them wherever
-                        you are!</p>
-                    <p>We're happy to inform that you can now convert YouTube videos to mp4 online using our website! This is yet another example of our dedication to providing you with the resources to download videos from YouTube and enjoy them wherever
-                        you are!</p>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-                <div class="col-12">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-            </div> -->
-            <!-- <div class="row m-0">
-                <div class="col-12">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 p-sm-4 p-lg-0">
-                    <div class="">
-                        <h2 class="pt-3 text-capitalize">
-                            FAQ
-                        </h2>
-                        <span class="title-border mb-3">
-
-                                        </span>
-                    </div>
-
-                    <h4>How to download video from YouTube on Android?</h4>
-                    <p>Paste the URL of the YT video or playlist in the input field and tap on the "Download" button. In the dropdown menu, you will see your YouTube song..</p>
-                    <h4>Is downloading a YouTube video illegal?</h4>
-                    <p>Generally, it's only illegal if the content is copyrighted and you didn't have permission to make copies of it. If you're downloading a YouTube video for personal use, it doesn't break anything.</p>
-
-                    <h4>Is Playlocal a limited number of uses? </h4>
-                    <p>Our "Youtube Downloader" tool allows you to download unlimited YouTube video and all for free.</p>
-                    <h4>What formats does Playlocal allow to convert YouTube video to?</h4>
-                    <p>We support convert and download video from youtube in a variety of formats like: MP4 and MP3. You can watch it right on the device without download any additional software.</p>
-                    <h4>Can we download youtube shorts or reels?</h4>
-                    <p>Yes you can, simply paste the link in search bar and click on download.</p>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-none d-lg-block">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-                <div class="col-12">
-                    <div id="container-961934b76b6b1df2ac3ce96ac22eaa9c"></div>
-                </div>
-            </div> -->
         </div>
 
     </div>
-</div>
+</div> -->

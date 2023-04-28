@@ -1,21 +1,32 @@
                 // @import '~bootstrap/scss/functions';
                 // @import '~bootstrap/scss/variables';
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
                 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
                 @import '../node_modules/bootstrap/scss/bootstrap.scss';
                 @import "../node_modules/bootstrap/scss/variables";
                 @import "../node_modules/bootstrap/scss/mixins";
+                @import "primeng/resources/themes/lara-light-blue/theme.css";
+                @import "primeng/resources/primeng.css";
+                @import "primeicons/primeicons.css";
                 $dark-blue:#1f2438 !important;
                 $yellow: #fccc04 !important;
                 $youtube: #FF0000 !important;
                 $facebook:#4267B2 !important;
                 $insta: #C13584 !important;
                 $linkedin:#0072b1 !important;
+                $white: #ffffff !important;
+                $dark: #d5d5d5 !important;
+                $blue_light:#E6E5F9 !important;
+                $pink_light:#FFEDEA !important;
+                $green_light:#D4FBFD !important;
+                $yellow_light:#FFF3C4 !important;
+                $dark-solid:#F3F3F3 !important;
                 body,
                 html {
                     height: 100%;
                     padding: 0;
                     margin: 0;
-                    font-family: 'Poppins', sans-serif !important;
+                    font-family: 'Inter', sans-serif;
                 }
                 
                 p,
@@ -26,7 +37,7 @@
                 h4,
                 h5,
                 h6 {
-                    font-family: 'Poppins', sans-serif !important;
+                    font-family: 'Inter', sans-serif;
                 }
                 
                 .vh-75 {
@@ -46,23 +57,19 @@
                 }
                 
                 .searchInput {
-                    border: 4px solid $dark-blue;
+                    border: 2px solid $dark;
                     padding: 13px 5px 13px 60px !important;
-                    font-size: 1.25rem !important;
-                    border-radius: 0px !important;
-                    -webkit-border-radius: 0px !important;
-                    -moz-border-radius: 0px !important;
-                    -ms-border-radius: 0px !important;
-                    -o-border-radius: 0px !important;
+                    font-size: 14px !important;
                     &:focus {
                         box-shadow: none !important;
                     }
                 }
                 
                 .fa-search {
-                    top: 18px !important;
-                    font-size: 30px !important;
-                    left: 20px !important;
+                    top: 14px !important;
+                    font-size: 20px !important;
+                    left: 25px !important;
+                    color: #484848;
                 }
                 
                 .pl-60 {
@@ -70,16 +77,17 @@
                 }
                 
                 .btn-download {
+                    padding-top: 14px !important;
+                    padding-bottom: 14px !important;
                     width: -webkit-fill-available !important;
-                    border-radius: 0px !important;
-                    -webkit-border-radius: 0px !important;
-                    -moz-border-radius: 0px !important;
-                    -ms-border-radius: 0px !important;
-                    -o-border-radius: 0px !important;
+                    font-size: 14px !important;
+                    font-weight: 500 !important;
                 }
                 
                 @include media-breakpoint-down(ms) {
                     .btn-download {
+                        padding-top: 13px !important;
+                        padding-bottom: 13px !important;
                         font-size: 12px !important;
                         font-weight: 300px !important;
                         padding: 10px 2px !important;
@@ -87,17 +95,16 @@
                 }
                 
                 @include media-breakpoint-down(md) {
-                    .btn-download {
-                        font-size: 12px !important;
-                        font-weight: bold !important;
-                        padding: 15px 0px !important;
-                    }
+                    // .btn-download {
+                    //     font-size: 12px !important;
+                    //     font-weight: bold !important;
+                    //     padding: 15px 0px !important;
+                    // }
                     .searchInput {
                         padding: 9px 5px 9px 35px !important;
-                        font-size: 1rem !important;
                     }
                     .fa-search {
-                        top: 15px !important;
+                        top: 13px !important;
                         font-size: 20px !important;
                         left: 13px !important;
                     }
@@ -106,17 +113,19 @@
                 @include media-breakpoint-between(md,
                 xl) {
                     .btn-download {
-                        font-size: 16px !important;
-                        font-weight: bold !important;
-                        padding: 19px 20px !important;
+                        padding-top: 14px !important;
+                        padding-bottom: 14px !important;
+                        font-size: 14px !important;
+                        font-weight: 500 !important;
                     }
                 }
                 
                 @include media-breakpoint-up(xl) {
                     .btn-download {
-                        font-size: 16px !important;
-                        font-weight: bold !important;
-                        padding: 19px 20px !important;
+                        padding-top: 14px !important;
+                        padding-bottom: 14px !important;
+                        font-size: 14px !important;
+                        font-weight: 500 !important;
                     }
                 }
                 
@@ -169,9 +178,10 @@
                 }
                 
                 .howtodownload {
+                    background: linear-gradient(89.81deg, #202438 0.15%, #18235A 90.22%);
                     img {
-                        width: -webkit-fill-available !important;
-                        height: 280px;
+                        width: 315px !important;
+                        height: 304px;
                     }
                 }
                 
@@ -185,7 +195,7 @@
                     .howtodownload {
                         img {
                             width: -webkit-fill-available !important;
-                            height: 230px !important;
+                            height: 280px !important;
                         }
                     }
                 }
@@ -198,10 +208,28 @@
                             font-weight: normal !important;
                         }
                     }
+                    // .howtodownload {
+                    //     img {
+                    //         width: -webkit-fill-available !important;
+                    //         height: 280px !important;
+                    //     }
+                    // }
+                }
+                
+                @include media-breakpoint-down(lg) {
                     .howtodownload {
                         img {
                             width: -webkit-fill-available !important;
-                            height: 230px !important;
+                            height: 280px !important;
+                        }
+                    }
+                }
+                
+                @include media-breakpoint-up(lg) {
+                    .howtodownload {
+                        img {
+                            width: 315px !important;
+                            height: 304px !important;
                         }
                     }
                 }
@@ -210,12 +238,12 @@
                     .youtube-content {
                         padding: 1rem !important;
                     }
-                    .howtodownload {
-                        img {
-                            width: -webkit-fill-available !important;
-                            height: 280px !important;
-                        }
-                    }
+                    // .howtodownload {
+                    //     img {
+                    //         width: 315px !important;
+                    //         height: 304px !important;
+                    //     }
+                    // }
                 }
                 
                 // .form-select {
@@ -254,9 +282,9 @@
                 
                 // /* Importing Bootstrap SCSS file. */
                 .card {
-                    min-height: 230px !important;
+                    min-height: 400px !important;
                     img {
-                        height: 230px !important;
+                        height: 320px !important;
                     }
                 }
                 
@@ -296,7 +324,7 @@
                     border-color: $dark-blue;
                 }
                 
-                #tabs .p-buttonset .p-button:nth-of-type(1).p-highlight {
+                #tabs .p-buttonset .p-button:nth-of-type(3).p-highlight {
                     background: $youtube;
                     border-color: $youtube;
                     .color-youtube {
@@ -304,15 +332,16 @@
                     }
                 }
                 
-                #tabs .p-buttonset .p-button:nth-of-type(2).p-highlight {
+                #tabs .p-buttonset .p-button:nth-of-type(1).p-highlight {
                     background: $facebook;
                     border-color: $facebook;
+                    backdrop-filter: blur(50px);
                     .color-fb {
                         color: #ffffff !important;
                     }
                 }
                 
-                #tabs .p-buttonset .p-button:nth-of-type(3).p-highlight {
+                #tabs .p-buttonset .p-button:nth-of-type(2).p-highlight {
                     background: $insta;
                     border-color: $insta;
                     .color-insta {
@@ -415,4 +444,205 @@
                 .pi {
                     font-size: 25px !important;
                     margin-left: 5px !important;
+                }
+                
+                // New Ui
+                .h-90vh {
+                    height: 90vh;
+                }
+                
+                .bg-header {
+                    background: url('../src/assets/img/landing-bg.jpg') center center no-repeat, linear-gradient(180deg, #202438 0%, rgba(32, 36, 56, 0.74) 100%);
+                    background-size: cover;
+                }
+                
+                .fs-20px {
+                    font-size: 20px !important;
+                }
+                
+                .fs-23px {
+                    font-size: 23px !important;
+                }
+                
+                .fs-28px {
+                    font-size: 28px !important;
+                }
+                
+                .fs-35px {
+                    font-size: 35px !important;
+                }
+                
+                .fw-300 {
+                    font-weight: 300 !important;
+                }
+                
+                .fw-400 {
+                    font-weight: 400 !important;
+                }
+                
+                .fw-500 {
+                    font-weight: 500 !important;
+                }
+                
+                .social-icon {
+                    color: #fff;
+                }
+                
+                .social-icons li {
+                    vertical-align: top;
+                    display: inline;
+                    height: 100px;
+                }
+                
+                .social-icons a {
+                    color: $white;
+                    text-decoration: none;
+                }
+                
+                .box-shadow-4 {
+                    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25) !important;
+                }
+                
+                .br-10px {
+                    border-radius: 10px !important;
+                    -webkit-border-radius: 10px !important;
+                    -moz-border-radius: 10px !important;
+                    -ms-border-radius: 10px !important;
+                    -o-border-radius: 10px !important;
+                }
+                
+                .bg-white {
+                    background: $white;
+                }
+                
+                .mt-120px {
+                    margin-top: -120px;
+                }
+                
+                #tabs .p-buttonset .p-button {
+                    border: 2px solid #d5d5d5;
+                    margin: 0 5px 0 0;
+                    border-radius: 36px !important;
+                    -webkit-border-radius: 36px !important;
+                    -moz-border-radius: 36px !important;
+                    -ms-border-radius: 36px !important;
+                    -o-border-radius: 36px !important;
+                }
+                
+                .br-36px {
+                    border-radius: 36px !important;
+                    -webkit-border-radius: 36px !important;
+                    -moz-border-radius: 36px !important;
+                    -ms-border-radius: 36px !important;
+                    -o-border-radius: 36px !important;
+                }
+                
+                .py-14px {
+                    padding-top: 14px !important;
+                    padding-bottom: 14px !important;
+                }
+                
+                // .bg-icons {
+                //     width: 56px;
+                //     height: 56px;
+                //     background-color: #E6E5F9;
+                //     border-radius: 50%;
+                //     ;
+                //     -webkit-border-radius: 50%;
+                //     -moz-border-radius: 50%;
+                //     -ms-border-radius: 50%;
+                //     -o-border-radius: 50%;
+                // }
+                .br-50 {
+                    border-radius: 50% !important;
+                    -webkit-border-radius: 50% !important;
+                    -moz-border-radius: 50% !important;
+                    -ms-border-radius: 50% !important;
+                    -o-border-radius: 50% !important;
+                }
+                
+                .wh-56px {
+                    width: 56px;
+                    height: 56px;
+                }
+                
+                .bg-light-blue {
+                    background: $blue_light;
+                }
+                
+                .bg-light-yellow {
+                    background: $yellow_light;
+                }
+                
+                .bg-light-green {
+                    background: $green_light;
+                }
+                
+                .bg-light-pink {
+                    background: $pink_light;
+                }
+                
+                .featues {
+                    img {
+                        width: 518.2px;
+                        height: 549.27px;
+                    }
+                }
+                
+                @include media-breakpoint-down(ms) {
+                    .featues {
+                        img {
+                            width: 318.2px !important;
+                            height: 349.27px !important;
+                        }
+                    }
+                }
+                
+                @include media-breakpoint-up(md) {
+                    .featues {
+                        img {
+                            height: 549.27px !important;
+                        }
+                    }
+                }
+                
+                .p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link {
+                    border: none !important;
+                }
+                
+                .p-accordion .p-accordion-content {
+                    padding: 20px 20px 20px 55px !important;
+                    border: none !important;
+                    border-radius: 0px !important;
+                    -webkit-border-radius: 0px !important;
+                    -moz-border-radius: 0px !important;
+                    -ms-border-radius: 0px !important;
+                    -o-border-radius: 0px !important;
+                }
+                
+                .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+                    box-shadow: none !important;
+                }
+                
+                .bg-dark-solid {
+                    background: $dark-solid;
+                }
+                
+                .thumbnail-img {
+                    object-fit: cover;
+                    width: 100%;
+                    border-radius: 14px;
+                    -webkit-border-radius: 14px;
+                    -moz-border-radius: 14px;
+                    -ms-border-radius: 14px;
+                    -o-border-radius: 14px;
+                }
+                
+                .pt-14px {
+                    padding-top: 14px !important;
+                }
+                
+                .pi-plus,
+                .pi-minus {
+                    font-size: 16px !important;
                 }

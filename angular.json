@@ -40,7 +40,8 @@
                             "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
                             "node_modules/primeicons/primeicons.css",
                             "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-                            "node_modules/primeng/resources/primeng.min.css"
+                            "node_modules/primeng/resources/primeng.min.css",
+                            "node_modules/primeicons/primeicons.css"
                         ],
                         "scripts": [
                             "./node_modules/jquery/dist/jquery.min.js",
@@ -110,7 +111,10 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+                            "node_modules/primeng/resources/primeng.min.css",
+                            "node_modules/primeicons/primeicons.css"
                         ],
                         "scripts": []
                     }

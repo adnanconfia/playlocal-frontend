@@ -1,10 +1,23 @@
-<header>
-    <nav class="navbar navbar-expand-lg  bg-dark-color">
-        <div class="container">
-            <a class="navbar-brand d-flex justify-content-center" (click)="logoClick()">
-                <!-- <img src="../../assets/img/logo.png" alt="Logo" class="logo"> -->
-                <img src="{{ logoPath }}" alt="Logo" class="logo">
-            </a>
+<header class="h-90vh  bg-header w-100 ">
+    <div class="d-flex flex-column h-100">
+        <nav class="navbar navbar-expand-lg  align-items-start mt-4">
+            <div class="container">
+                <a class="navbar-brand d-flex justify-content-center" (click)="logoClick()">
+                    <img src="{{ logoPath }}" alt="Logo" class="logo">
+                </a>
+
+            </div>
+        </nav>
+        <div class="container text-center flex-grow-1 d-flex justify-content-center align-items-center">
+            <div class="downloder-details">
+                <h1 class="text-white fs-28px">
+                    Facebook
+                    <span class="color-yellow">Downloader</span>
+                </h1>
+                <p class="text-white fs-20px mt-4">Welcome to PlayLocal facebook downloader, just simply<br> paste your link, download video/audio and enjoy listening!.</p>
+            </div>
         </div>
-    </nav>
+    </div>
+
+
 </header>

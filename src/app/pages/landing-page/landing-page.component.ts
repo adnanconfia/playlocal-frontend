@@ -24,9 +24,10 @@ import { filter } from 'rxjs/operators';
 })
 export class LandingPageComponent implements OnInit {
   public stateOptions: any[];
-  public value1: string = 'mp4';
-  public value_tabs: string = 'youtube';
+  public value1: any = 0;
+  public value_tabs: string = 'facebook';
   public tabs_option: any[];
+  public progressValue = 0;
   searchVideo: any = new FormGroup({ url: new FormControl() });
 
   constructor(
@@ -45,11 +46,6 @@ export class LandingPageComponent implements OnInit {
     // console.log(this.value1);
     this.tabs_option = [
       {
-        label: 'YouTube',
-        value: 'youtube',
-        icon: 'pi pi-youtube color-youtube'
-      },
-      {
         label: 'FaceBook',
         value: 'facebook',
         icon: 'pi pi-facebook color-fb'
@@ -59,6 +55,12 @@ export class LandingPageComponent implements OnInit {
         value: 'instagram',
         icon: 'pi pi-instagram color-insta'
       },
+      {
+        label: 'YouTube',
+        value: 'youtube',
+        icon: 'pi pi-youtube color-youtube'
+      },
+
       {
         label: 'LnikedIn',
         value: 'linkedin',
@@ -88,6 +90,9 @@ export class LandingPageComponent implements OnInit {
   public LinkedUrl: any;
   public ResFbUrl: any;
   public RespUrl: any;
+  public audio_ext: any = '.mp3';
+  public video_ext: any = '.mp4';
+  public progress = 0;
   ngOnInit(): void {
     this.searchVideo = this.fb.group({
       url: ['', [Validators.required]]
@@ -120,7 +125,7 @@ export class LandingPageComponent implements OnInit {
             this.url_error = false;
             this.service.GetVedioDetails(this.YoutubeUrl).subscribe(
               (resp: any) => {
-                // console.log(resp);
+                console.log(resp);
                 this.spinner = false;
                 this.VideoDetails = resp['data']['0'];
                 this.Videotitle = this.VideoDetails['title'];
@@ -251,6 +256,7 @@ export class LandingPageComponent implements OnInit {
   }
   ChangeTab() {
     this.tabs_option = this.tabs_option;
+    // console.log(this.tabs_option)
     this.url_error = false;
     this.VideoDetails = null;
     this.searchVideo.reset();
@@ -296,20 +302,25 @@ export class LandingPageComponent implements OnInit {
               Swal.fire('Alert', 'Something is not right', 'error');
             }
           );
+
         // console.log(this.VideoDetails);
       }
     } else if (this.value_tabs === 'facebook') {
       if (this.FbUrl && this.selected_quality) {
+        // setInterval(() => {
+        //   this.progress = Math.floor(Math.random() * 100) + 1;
+        // }, 1000);
         this.fbservices
           .downloadFile(this.FbUrl, this.selected_quality)
           .subscribe(
             (resp: any) => {
+              this.progress = 100;
               this.spinner2 = false;
               this.Disable = true;
               this.RespUrl = resp['data'][0].file_path;
               // console.log(resp);
             },
-            error => {
+            (error: any) => {
               this.spinner2 = false;
               this.selected_quality = null;
               this.Disable = false;
@@ -348,6 +359,7 @@ export class LandingPageComponent implements OnInit {
   }
   selectAudio(a: any) {
     this.spinner2 = true;
+
     this.selected_quality = a;
     if (this.value_tabs === 'youtube') {
       if (this.YoutubeUrl && this.selected_quality) {
@@ -486,5 +498,217 @@ export class LandingPageComponent implements OnInit {
       left: 0,
       behavior: 'smooth'
     });
+  }
+  Audio() {
+    this.value1 = 1;
+  }
+  Video() {
+    this.value1 = 0;
+  }
+  DownFile(qua: any) {
+    console.log(qua);
+    this.spinner2 = true;
+    this.selected_quality = qua;
+    if (this.value_tabs === 'youtube') {
+      if (this.value1 == 1) {
+        if (this.YoutubeUrl && this.selected_quality) {
+          this.service
+            .DownloadAudio(this.YoutubeUrl, this.selected_quality)
+            .subscribe(
+              (resp: any) => {
+                let interval = setInterval(() => {
+                  this.progressValue =
+                    this.progressValue + Math.floor(Math.random() * 10) + 1;
+                  if (this.progressValue >= 100) {
+                    this.progressValue = 100;
+                    clearInterval(interval);
+                    this.RespUrl = resp['data'][0].file_path;
+                    console.log(this.RespUrl);
+                    this.DownloadFile(this.RespUrl, this.audio_ext);
+                  }
+                }, 1000);
+                // this.RespUrl = resp['data'][0].file_path;
+                // console.log(this.RespUrl);
+                // this.DownloadFile(this.RespUrl, this.audio_ext);
+              },
+              error => {
+                this.spinner = false;
+                this.spinner2 = false;
+                this.selected_quality = null;
+                this.Disable = false;
+                Swal.fire('Alert', 'Something is not right', 'error');
+              }
+            );
+          // console.log(this.VideoDetails);
+        }
+      } else if (this.value1 == 0) {
+        if (this.value_tabs === 'youtube') {
+          if (this.YoutubeUrl && this.selected_quality) {
+            this.service
+              .DownloadVideo(this.YoutubeUrl, this.selected_quality)
+              .subscribe(
+                (resp: any) => {
+                  // let interval = setInterval(() => {
+                  //   this.progressValue =
+                  //     this.progressValue + Math.floor(Math.random() * 10) + 1;
+                  //   if (this.progressValue >= 100) {
+                  //     this.progressValue = 100;
+                  //     clearInterval(interval);
+
+                  //     this.RespUrl = resp['data'][0].file_path;
+                  //     this.DownloadFile(this.RespUrl, this.video_ext);
+                  //   }
+                  // }, 1000);
+                  this.RespUrl = resp['data'][0].file_path;
+                  this.DownloadFile(this.RespUrl, this.video_ext);
+                },
+                error => {
+                  this.spinner = false;
+                  this.spinner2 = false;
+                  this.selected_quality = null;
+                  this.Disable = false;
+                  Swal.fire('Alert', 'Something is not right', 'error');
+                }
+              );
+            // console.log(this.VideoDetails);
+          }
+        }
+      }
+    } else if (this.value_tabs === 'facebook') {
+      if (this.FbUrl && this.selected_quality) {
+        if (this.value1 == 0) {
+          this.fbservices
+            .downloadFile(this.FbUrl, this.selected_quality)
+            .subscribe(
+              (resp: any) => {
+                // this.spinner2 = false;
+                // this.Disable = true;
+                console.log(resp);
+                this.RespUrl = resp['data'][0].file_path;
+                this.DownloadFile(this.RespUrl, this.video_ext);
+                // console.log(resp);
+              },
+              error => {
+                this.spinner2 = false;
+                this.selected_quality = null;
+                this.Disable = false;
+                Swal.fire('Alert', 'Something is not right', 'error');
+              }
+            );
+        } else if (this.value1 == 1) {
+          this.fbservices
+            .DownloadFBAudio(this.FbUrl, this.selected_quality)
+            .subscribe(
+              (resp: any) => {
+                // this.spinner2 = false;
+                // this.Disable = true;
+                this.RespUrl = resp['data'][0].file_path;
+                console.log(this.RespUrl);
+                this.DownloadFile(this.RespUrl, this.audio_ext);
+              },
+              error => {
+                this.spinner = false;
+                this.spinner2 = false;
+                this.selected_quality = null;
+                this.Disable = false;
+                Swal.fire('Alert', 'Something is not right', 'error');
+              }
+            );
+          // console.log(this.VideoDetails);
+        }
+      }
+    }
+    if (this.value_tabs === 'instagram') {
+      if (this.InstaUrl && this.selected_quality) {
+        if (this.value1 == 1) {
+          {
+            this.instaservices.getAudioFile(this.RespUrl).subscribe(
+              (resp: any) => {
+                // this.spinner2 = false;
+                // this.Disable = true;
+                // console.log(resp);
+                this.RespUrl = resp['data'][0].file_path;
+                this.DownloadFile(this.ResFbUrl, this.audio_ext);
+              },
+              error => {
+                this.spinner2 = false;
+                this.selected_quality = null;
+                this.Disable = false;
+                Swal.fire('Alert', 'Something is not right', 'error');
+              }
+            );
+          }
+        } else if (this.value1 == 0) {
+          this.DownloadFile(this.RespUrl, this.video_ext);
+        }
+      }
+    }
+    if (this.value_tabs === 'linkedin') {
+      if (this.LinkedUrl && this.selected_quality) {
+        if (this.value1 == 1) {
+          this.linkedservices
+            .downloadFile(this.LinkedUrl, this.selected_quality)
+            .subscribe(
+              (resp: any) => {
+                // this.spinner2 = false;
+                // this.Disable = true;
+                // console.log(resp);
+                this.RespUrl = resp['data'][0].file_path;
+                this.DownloadFile(this.RespUrl, this.audio_ext);
+              },
+              error => {
+                this.spinner2 = false;
+                this.selected_quality = null;
+                this.Disable = false;
+                Swal.fire('Alert', 'Something is not right', 'error');
+              }
+            );
+        }
+        if (this.value1 == 0) {
+          this.linkedservices
+            .downloadFile(this.LinkedUrl, this.selected_quality)
+            .subscribe(
+              (resp: any) => {
+                // this.spinner2 = false;
+                // this.Disable = true;
+                this.RespUrl = resp['data'][0].file_path;
+                this.DownloadFile(this.RespUrl, this.video_ext);
+                // console.log(this.RespUrl);
+                // console.log(resp);
+              },
+              error => {
+                this.spinner2 = false;
+                this.selected_quality = null;
+                this.Disable = false;
+                Swal.fire('Alert', 'Something is not right', 'error');
+              }
+            );
+        }
+      }
+    }
+  }
+  DownloadFile(res_url: any, ext: any) {
+    this.spinner2 = false;
+    this.gototop();
+    // console.log(this.RespUrl);
+    FileSaver.saveAs(res_url, this.Videotitle + '.' + ext);
+
+    setTimeout(() => {
+      // FileSaver.saveAs(this.RespUrl, this.Videotitle + '.' + this.value1);
+
+      this.service.DeleteFile(res_url).subscribe((resp: any) => {
+        // console.log(resp);
+      });
+    }, 8000);
+
+    this.service.downloaded = true;
+    this.progressValue = 0;
+    this.searchVideo.reset();
+    this.VideoDetails = null;
+    this.url_error = false;
+    this.spinner = false;
+    this.selected_quality = null;
+    this.Disable = false;
+    this.spinner2 = false;
   }
 }
