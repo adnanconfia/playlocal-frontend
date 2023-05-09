@@ -584,15 +584,15 @@
                 
                 .featues {
                     img {
-                        width: 518.2px;
-                        height: 549.27px;
+                        width: 289px;
+                        height: 458px;
                     }
                 }
                 
                 @include media-breakpoint-down(ms) {
                     .featues {
                         img {
-                            width: 318.2px !important;
+                            width: 300px !important;
                             height: 349.27px !important;
                         }
                     }
@@ -601,6 +601,16 @@
                 @include media-breakpoint-up(md) {
                     .featues {
                         img {
+                            width: 250px !important;
+                            height: 506px !important;
+                        }
+                    }
+                }
+                
+                @include media-breakpoint-up(lg) {
+                    .featues {
+                        img {
+                            width: 289px !important;
                             height: 549.27px !important;
                         }
                     }

@@ -18,6 +18,7 @@ import { TermsComponent } from './pages/terms/terms.component';
 // import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { AccordionModule } from 'primeng/accordion';
+import { FilesizePipe } from './filesize.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AccordionModule } from 'primeng/accordion';
     FooterComponent,
     LandingPageComponent,
     ThanksComponent,
-    TermsComponent
+    TermsComponent,
+    FilesizePipe
   ],
   imports: [
     BrowserModule,

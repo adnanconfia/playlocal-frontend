@@ -1,3 +1,4 @@
+import { HttpEventType } from '@angular/common/http';
 // import VideoToAudio from  '../../../../node_modules/video-to-audio';
 import { LinkedInService } from './../../services/linked-in.service';
 import { InstagramService } from './../../services/instagram.service';
@@ -10,6 +11,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpResponse, HttpClient } from '@angular/common/http';
@@ -93,6 +95,8 @@ export class LandingPageComponent implements OnInit {
   public audio_ext: any = '.mp3';
   public video_ext: any = '.mp4';
   public progress = 0;
+  public size: any;
+  public size_resolution: any;
   ngOnInit(): void {
     this.searchVideo = this.fb.group({
       url: ['', [Validators.required]]
@@ -130,8 +134,10 @@ export class LandingPageComponent implements OnInit {
                 this.VideoDetails = resp['data']['0'];
                 this.Videotitle = this.VideoDetails['title'];
                 this.thumbnail = this.VideoDetails['thumbnail_url'];
-                this.Videoquality = this.VideoDetails['resolution'];
+                this.Videoquality = this.VideoDetails['quality'];
                 this.audio = this.VideoDetails['audio'];
+                this.size = this.VideoDetails['size'];
+                // this.size_resolution = this.VideoDetails['size_resolution'];
                 // console.log(this.value1);
                 // console.log(this.Videoquality);
               },
@@ -153,12 +159,13 @@ export class LandingPageComponent implements OnInit {
             this.url_error = false;
             this.fbservices.getFbVideoDetails(this.FbUrl).subscribe(
               (resp: any) => {
-                // console.log(resp);
+                console.log(resp);
                 this.spinner = false;
                 this.VideoDetails = resp['data']['0'];
                 this.Videotitle = this.VideoDetails['title'];
                 this.thumbnail = this.VideoDetails['thumbnail'];
                 this.Videoquality = this.VideoDetails['quality'];
+                this.size = this.VideoDetails['size'];
                 this.audio = this.VideoDetails['audio'];
                 // console.log(this.value1);
                 // console.log(this.Videoquality);
@@ -191,6 +198,7 @@ export class LandingPageComponent implements OnInit {
                 this.thumbnail = this.VideoDetails['thumbnail'];
                 this.RespUrl = this.VideoDetails['file_path'];
                 this.Videoquality = this.VideoDetails['quality'];
+                this.size = this.VideoDetails['size'];
                 this.audio = this.VideoDetails['audio'];
                 // this.Disable = true;
               },
@@ -221,6 +229,7 @@ export class LandingPageComponent implements OnInit {
                 this.Videotitle = this.VideoDetails['title'];
                 this.thumbnail = this.VideoDetails['thumbnail'];
                 this.Videoquality = this.VideoDetails['quality'];
+                this.size = this.VideoDetails['size'];
                 this.audio = this.VideoDetails['audio'];
                 // this.Disable = true;
               },
@@ -455,7 +464,7 @@ export class LandingPageComponent implements OnInit {
     FileSaver.saveAs(this.RespUrl, this.Videotitle + '.' + this.value1);
     setTimeout(() => {
       // FileSaver.saveAs(this.RespUrl, this.Videotitle + '.' + this.value1);
-
+      // console.log('downloaded');
       this.service.DeleteFile(this.RespUrl).subscribe((resp: any) => {
         // console.log(resp);
       });
@@ -580,13 +589,14 @@ export class LandingPageComponent implements OnInit {
           this.fbservices
             .downloadFile(this.FbUrl, this.selected_quality)
             .subscribe(
-              (resp: any) => {
-                // this.spinner2 = false;
-                // this.Disable = true;
-                console.log(resp);
-                this.RespUrl = resp['data'][0].file_path;
-                this.DownloadFile(this.RespUrl, this.video_ext);
-                // console.log(resp);
+              (event: any) => {
+                if (event.type === HttpEventType.Response) {
+                  const responseData = event.body;
+                  // this.spinner2 = false;
+                  // this.Disable = true;
+                  this.RespUrl = responseData['data'][0].file_path;
+                  this.DownloadFile(this.RespUrl, this.video_ext);
+                }
               },
               error => {
                 this.spinner2 = false;
