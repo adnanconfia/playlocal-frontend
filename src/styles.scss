@@ -324,14 +324,13 @@
                     border-color: $dark-blue;
                 }
                 
-                #tabs .p-buttonset .p-button:nth-of-type(3).p-highlight {
-                    background: $youtube;
-                    border-color: $youtube;
-                    .color-youtube {
-                        color: #ffffff !important;
-                    }
-                }
-                
+                // #tabs .p-buttonset .p-button:nth-of-type(3).p-highlight {
+                //     background: $youtube;
+                //     border-color: $youtube;
+                //     .color-youtube {
+                //         color: #ffffff !important;
+                //     }
+                // }
                 #tabs .p-buttonset .p-button:nth-of-type(1).p-highlight {
                     background: $facebook;
                     border-color: $facebook;
@@ -349,7 +348,7 @@
                     }
                 }
                 
-                #tabs .p-buttonset .p-button:nth-of-type(4).p-highlight {
+                #tabs .p-buttonset .p-button:nth-of-type(3).p-highlight {
                     background: $linkedin;
                     border-color: $linkedin;
                     .color-linked {

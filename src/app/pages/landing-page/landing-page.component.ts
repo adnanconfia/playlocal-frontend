@@ -57,11 +57,6 @@ export class LandingPageComponent implements OnInit {
         value: 'instagram',
         icon: 'pi pi-instagram color-insta'
       },
-      {
-        label: 'YouTube',
-        value: 'youtube',
-        icon: 'pi pi-youtube color-youtube'
-      },
 
       {
         label: 'LnikedIn',
