@@ -29,7 +29,7 @@ export class LandingPageComponent implements OnInit {
   public value1: any = 0;
   public value_tabs: string = 'facebook';
   public tabs_option: any[];
-  public progressValue = 0;
+  // public progressValue = 0;
   searchVideo: any = new FormGroup({ url: new FormControl() });
 
   constructor(
@@ -94,9 +94,10 @@ export class LandingPageComponent implements OnInit {
   public RespUrl: any;
   public audio_ext: any = '.mp3';
   public video_ext: any = '.mp4';
-  public progress = 0;
+  public audio_size: any;
+  // public progress = 0;
   public size: any;
-  public size_resolution: any;
+  // public size_resolution: any;
   ngOnInit(): void {
     this.searchVideo = this.fb.group({
       url: ['', [Validators.required]]
@@ -129,15 +130,15 @@ export class LandingPageComponent implements OnInit {
             this.url_error = false;
             this.service.GetVedioDetails(this.YoutubeUrl).subscribe(
               (resp: any) => {
-                console.log(resp);
+                // console.log(resp);
                 this.spinner = false;
                 this.VideoDetails = resp['data']['0'];
                 this.Videotitle = this.VideoDetails['title'];
                 this.thumbnail = this.VideoDetails['thumbnail_url'];
-                this.Videoquality = this.VideoDetails['quality'];
+                this.Videoquality = this.VideoDetails['resolution'];
                 this.audio = this.VideoDetails['audio'];
                 this.size = this.VideoDetails['size'];
-                // this.size_resolution = this.VideoDetails['size_resolution'];
+                this.audio_size = this.VideoDetails['au_size'];
                 // console.log(this.value1);
                 // console.log(this.Videoquality);
               },
@@ -159,7 +160,7 @@ export class LandingPageComponent implements OnInit {
             this.url_error = false;
             this.fbservices.getFbVideoDetails(this.FbUrl).subscribe(
               (resp: any) => {
-                console.log(resp);
+                // console.log(resp);
                 this.spinner = false;
                 this.VideoDetails = resp['data']['0'];
                 this.Videotitle = this.VideoDetails['title'];
@@ -273,6 +274,7 @@ export class LandingPageComponent implements OnInit {
     this.selected_quality = null;
     this.Disable = false;
     this.spinner2 = false;
+    this.audio_size = null;
   }
   // getClass(item: any) {
   //   let value = item.value;
@@ -323,7 +325,7 @@ export class LandingPageComponent implements OnInit {
           .downloadFile(this.FbUrl, this.selected_quality)
           .subscribe(
             (resp: any) => {
-              this.progress = 100;
+              // this.progress = 100;
               this.spinner2 = false;
               this.Disable = true;
               this.RespUrl = resp['data'][0].file_path;
@@ -515,7 +517,7 @@ export class LandingPageComponent implements OnInit {
     this.value1 = 0;
   }
   DownFile(qua: any) {
-    console.log(qua);
+    // console.log(qua);
     this.spinner2 = true;
     this.selected_quality = qua;
     if (this.value_tabs === 'youtube') {
@@ -525,20 +527,20 @@ export class LandingPageComponent implements OnInit {
             .DownloadAudio(this.YoutubeUrl, this.selected_quality)
             .subscribe(
               (resp: any) => {
-                let interval = setInterval(() => {
-                  this.progressValue =
-                    this.progressValue + Math.floor(Math.random() * 10) + 1;
-                  if (this.progressValue >= 100) {
-                    this.progressValue = 100;
-                    clearInterval(interval);
-                    this.RespUrl = resp['data'][0].file_path;
-                    console.log(this.RespUrl);
-                    this.DownloadFile(this.RespUrl, this.audio_ext);
-                  }
-                }, 1000);
-                // this.RespUrl = resp['data'][0].file_path;
+                // let interval = setInterval(() => {
+                //   this.progressValue =
+                //     this.progressValue + Math.floor(Math.random() * 10) + 1;
+                //   if (this.progressValue >= 100) {
+                //     this.progressValue = 100;
+                //     clearInterval(interval);
+                //     this.RespUrl = resp['data'][0].file_path;
+                //     console.log(this.RespUrl);
+                //     this.DownloadFile(this.RespUrl, this.audio_ext);
+                //   }
+                // }, 1000);
+                this.RespUrl = resp['data'][0].file_path;
                 // console.log(this.RespUrl);
-                // this.DownloadFile(this.RespUrl, this.audio_ext);
+                this.DownloadFile(this.RespUrl, this.audio_ext);
               },
               error => {
                 this.spinner = false;
@@ -595,6 +597,7 @@ export class LandingPageComponent implements OnInit {
                   // this.spinner2 = false;
                   // this.Disable = true;
                   this.RespUrl = responseData['data'][0].file_path;
+
                   this.DownloadFile(this.RespUrl, this.video_ext);
                 }
               },
@@ -613,7 +616,7 @@ export class LandingPageComponent implements OnInit {
                 // this.spinner2 = false;
                 // this.Disable = true;
                 this.RespUrl = resp['data'][0].file_path;
-                console.log(this.RespUrl);
+                // console.log(this.RespUrl);
                 this.DownloadFile(this.RespUrl, this.audio_ext);
               },
               error => {
@@ -638,7 +641,8 @@ export class LandingPageComponent implements OnInit {
                 // this.Disable = true;
                 // console.log(resp);
                 this.RespUrl = resp['data'][0].file_path;
-                this.DownloadFile(this.ResFbUrl, this.audio_ext);
+                // console.log(this.RespUrl);
+                this.DownloadFile(this.RespUrl, this.audio_ext);
               },
               error => {
                 this.spinner2 = false;
@@ -664,6 +668,7 @@ export class LandingPageComponent implements OnInit {
                 // this.Disable = true;
                 // console.log(resp);
                 this.RespUrl = resp['data'][0].file_path;
+                // console.log(this.RespUrl);
                 this.DownloadFile(this.RespUrl, this.audio_ext);
               },
               error => {
@@ -703,16 +708,16 @@ export class LandingPageComponent implements OnInit {
     // console.log(this.RespUrl);
     FileSaver.saveAs(res_url, this.Videotitle + '.' + ext);
 
-    setTimeout(() => {
-      // FileSaver.saveAs(this.RespUrl, this.Videotitle + '.' + this.value1);
+    // setTimeout(() => {
+    // FileSaver.saveAs(this.RespUrl, this.Videotitle + '.' + this.value1);
 
-      this.service.DeleteFile(res_url).subscribe((resp: any) => {
-        // console.log(resp);
-      });
-    }, 8000);
+    // this.service.DeleteFile(res_url).subscribe((resp: any) => {
+    // console.log(resp);
+    // });
+    // }, 8000);
 
     this.service.downloaded = true;
-    this.progressValue = 0;
+    // this.progressValue = 0;
     this.searchVideo.reset();
     this.VideoDetails = null;
     this.url_error = false;
