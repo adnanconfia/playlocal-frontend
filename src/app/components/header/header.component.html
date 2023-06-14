@@ -10,11 +10,15 @@
         </nav>
         <div class="container text-center flex-grow-1 d-flex justify-content-center align-items-center">
             <div class="downloder-details">
-                <h1 class="text-white fs-28px">
-                    Facebook
+                <h1 class="text-white fs-28px text-capitalize">
+                    <span *ngIf="tabValue">{{tabValue}} </span>
+                    <span *ngIf="!tabValue">Facebook </span>
                     <span class="color-yellow">Downloader</span>
                 </h1>
-                <p class="text-white fs-20px mt-4">Welcome to PlayLocal facebook downloader, just simply<br> paste your link, download video/audio and enjoy listening!.</p>
+                <p class="text-white fs-20px mt-4">Welcome to PlayLocal
+                    <span *ngIf="tabValue">{{tabValue}}</span>
+                    <span *ngIf="!tabValue">facebook</span> downloader, just simply<br> paste your link, download video/audio and enjoy listening!.
+                </p>
             </div>
         </div>
     </div>

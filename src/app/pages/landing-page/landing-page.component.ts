@@ -4,7 +4,7 @@ import { LinkedInService } from './../../services/linked-in.service';
 import { InstagramService } from './../../services/instagram.service';
 import { FacebookService } from './../../services/facebook.service';
 import { SearchVideoService } from './../../services/search-video.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -261,7 +261,7 @@ export class LandingPageComponent implements OnInit {
   }
   ChangeTab() {
     this.tabs_option = this.tabs_option;
-    // console.log(this.tabs_option)
+    // console.log(this.tabs_option);
     this.url_error = false;
     this.VideoDetails = null;
     this.searchVideo.reset();
@@ -720,5 +720,10 @@ export class LandingPageComponent implements OnInit {
     this.selected_quality = null;
     this.Disable = false;
     this.spinner2 = false;
+  }
+  sendTabValue(): void {
+    this.value_tabs = this.value_tabs;
+    console.log(this.value_tabs);
+    this.router.navigate([''], { queryParams: { tab: this.value_tabs } });
   }
 }

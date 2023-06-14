@@ -6,7 +6,7 @@
             <div id="tabs" class="px-3">
 
 
-                <p-selectButton [options]="tabs_option" [(ngModel)]="value_tabs" optionLabel="label" optionValue="value" (onChange)='ChangeTab()'>
+                <p-selectButton [options]="tabs_option" [(ngModel)]="value_tabs" optionLabel="label" optionValue="value" (click)='sendTabValue()' (onChange)='ChangeTab()'>
                     <ng-template let-item>
                         <i [class]="item.icon"></i>
                         <span class="d-none d-lg-block mx-2">{{item.label}}</span>
